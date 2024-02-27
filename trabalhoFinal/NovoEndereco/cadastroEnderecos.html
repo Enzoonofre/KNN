@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro Endereços</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+</head>
+
+
+<body>
+
+    <header>
+        <h1>Clínica ABC Health</h1>
+
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+            <li><a href="../index.html">Links</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Novo Endereço</h2>
+
+        <form action="cadastraCliente.php" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <!--<legend class="campo">Endereço de Entrega</legend>-->
+
+                <div>
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" required>
+                </div>
+                <div>
+                    <label for="log">Logradouro:</label>
+                    <input type="text" id="log" name="log" required>
+                </div>
+                <div>
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+                <div>
+                    <label for="estado">Estado:</label>
+                    <input type="text" id="estado" name="estado" required>
+                </div>
+            </fieldset>
+
+            <button id="botao">Cadastrar</button>
+
+        </form>
+
+    </main>
+
+</body>
+
+
+</html>
