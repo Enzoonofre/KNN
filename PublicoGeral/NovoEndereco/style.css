@@ -2,38 +2,51 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444;
     line-height: 1.5rem;
-    background-color: #bbd9e9;
+    background-color: #539fa2;
     width: 80%;
     margin: 0 auto;
     padding: 2% 0;
     
 }
 
-header{
-    background-color: #bbd9e9;
-    padding: 0 20px;
-    border-radius: 10px;  
+
+.conteiner{
+    display: flex;
+    background-color: #72b1a4;
+    justify-content: space-evenly;
+    border-radius: 7px;
+    flex-wrap: wrap;
+
+    
 }
 
-header h1{
-    color: black;
+.item{
+    background-color: #abccb1;
+    padding: 0.7rem;
+    border-radius: 12px;
+    width: 10vh;
     text-align: center;
-    margin-right: 90px;
+    margin: 0 3em 0 3em;
+    }
+
+
+header{
+    color: #d4e2b6;
+    text-align: center;
+    
+}
+li{
+    color: white;
 }
 
 nav{
-    background-color: #bbd9e9;
-    padding: 0 20px;
-    border-radius: 10px;
     text-align: center;
-    text-transform: uppercase;
-    
+    text-transform: uppercase; 
 }
 
 ul {
     list-style: none; 
     padding: 0;
-    text-align: center;
     
 }
 
