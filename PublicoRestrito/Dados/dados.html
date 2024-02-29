@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de dados</title>
+    <link rel="stylesheet" href="style2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <main>
+        <div class="conteiner">
+            <label for="selecione">Selecione a opção desejada:</label>
+            <select name="opc">
+                <option value="" selected>Selecione</option>
+                <option value="funcionariosCad.html">Funcionarios Cadastrados</option>
+                <option value="pacientesCadastrados.html">Pacientes Cadastrados</option>
+                <option value="enderecos.html">Endereços Auxiliares</option>
+                <option value="agendamentoClientes.html">Agendamentos realizados por clientes</option>
+                <option value="agendamentoMedico.html">Meus Agendamentos(consultas do funcionário logado caso ele seja um médico)</option>
+            </select>
+            <button id="btn">OK</button>
+        </div>
+    </main>
+    <script src="redirecionamento.js"></script>
+</body>
+
+</html>
