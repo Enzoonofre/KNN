@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(58, 3, 3);
+    line-height: 1.5;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+header {
+    background-color: rgb(58, 3, 3);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 10px;
+    color: whitesmoke;    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foot {
+    background-color: rgb(58, 3, 3);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+}
