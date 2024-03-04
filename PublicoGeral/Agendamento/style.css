@@ -152,3 +152,8 @@ img {
     border: none;
     padding: 0;
 }
+
+footer{
+    text-align: center;
+    margin-top: 1rem;
+}

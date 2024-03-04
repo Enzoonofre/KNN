@@ -6,10 +6,10 @@ body {
     width: 80%;
     margin: 0 auto;
     padding: 2% 0;
-    
+
 }
 
-header{
+header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,13 +40,15 @@ header{
 }
 
 .item a {
-    text-align: center; /* Centraliza o texto horizontalmente */
-    display: block; /* Para ocupar a largura total do div */
+    text-align: center;
+    /* Centraliza o texto horizontalmente */
+    display: block;
+    /* Para ocupar a largura total do div */
 }
 
-main{
+main {
     width: 60%;
-    padding: 2rem;
+    padding: 0 2rem;
     margin: 1rem auto 0;
     background-color: #72b1a4;
     border: 0.8px solid #aaa;
@@ -71,46 +73,15 @@ img {
 
 }
 
-select{
-    width: 100%;
-    padding: 0.2rem;
-    border: 1px solid #001;
-    box-shadow: 0px 0px 5px rgb(49, 49, 49);
-    border-radius: 3px;
-    font-weight: bold;
-    background-color: #abccb1;
-}
-
-.conteiner2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 400px;
-    margin: 0 auto;
-    /*padding: 2rem;*/
-}
-
-label{
-    margin-bottom: 1rem;
-}
-
-button{
-    margin-top: 1rem;
-    padding: 0.2rem 1rem;
-    font-weight: bold;
-    background-color: #abccb1;
-}
-
-a{
+a {
     text-decoration: none;
     color: black;
 }
 
-footer{
+footer {
     text-align: center;
-    margin-top: 1rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }
-
-
-
-
