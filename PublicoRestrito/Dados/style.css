@@ -3,34 +3,37 @@ body{
     color: #444;
     line-height: 1.5rem;
     background-color: #539fa2;
-    width: 60%;
+    width: 90%;
     margin: 0 auto;
-    padding: 2% 0;
+    /*padding: 2% 0;*/
 }
 
 header{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 200px;
+    margin: 2rem;
 }
 
 .conteiner {
     display: flex;
     background-color: #72b1a4;
     /*background-color: blue;*/
+    text-align: center;
     justify-content: center;
     border-radius: 7px;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     font-weight: bold;
+    /*padding: 1rem;*/
+
 }
 
 .item {
     background-color: #abccb1;
     padding: 1rem;
     border-radius: 12px;
-    margin-right: 8%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin: 1.5rem 3.5rem;
     width: 20vh;
     display: flex;
     justify-content: center;
