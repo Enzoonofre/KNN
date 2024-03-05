@@ -1,27 +1,9 @@
-body {
-    background-color: rgb(58, 3, 3);
-    line-height: 1.5;
-    margin: 0;
-}
 
-h1 {
-    font-family: 'Roboto', sans-serif;
-    color: whitesmoke;
-    text-decoration: none;
-    font-weight: 500;
-}
 
 header {
-    background-color: rgb(58, 3, 3);
-    padding: 15px;
+    background-color: #72b1a4;
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.logo {
-    margin-right: 10px;
-    color: whitesmoke;    
 }
 
 .container {
@@ -31,7 +13,7 @@ header {
 }
 
 .foot {
-    background-color: rgb(58, 3, 3);
+    background-color: #72b1a4;
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -39,4 +21,18 @@ header {
     position: absolute;
     bottom: 0;
     width: 100%;
+}
+
+img {
+    mix-blend-mode: multiply;
+}
+
+#logo {
+    width: 300px;
+    margin-top: 0px;
+}
+
+#botao{
+    padding: 5px;
+    margin: 10px;
 }

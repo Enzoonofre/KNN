@@ -1,11 +1,12 @@
-body{
+body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444;
     line-height: 1.5rem;
-    background-color: #539fa2;
-    width: 90%;
     margin: 0 auto;
-    /*padding: 2% 0;*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Para que o corpo se estenda até o final da página */
+
 }
 
 @media (max-width: 768px) {
@@ -23,20 +24,15 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    margin: 2rem;
+    background-color: #72b1a4;
 }
 
 .conteiner {
     display: flex;
-    background-color: #72b1a4;
-    /*background-color: blue;*/
     text-align: center;
     justify-content: center;
-    border-radius: 7px;
     flex-wrap: wrap;
     font-weight: bold;
-    /*padding: 1rem;*/
 
 }
 
@@ -75,7 +71,7 @@ main{
 
 #logo {
     width: 300px;
-    height: 300px;
+    
     margin-top: 0px;
 }
 
@@ -99,15 +95,17 @@ h2{
 table, th, td {
     border: 1px solid #000;
     background-color: #abccb1;
-    /*justify-content: center;
-    display: flex;*/
     margin: 0 auto;
     
 }
 
 footer{
-    text-align: center;
-    margin-top: 1rem;
+    background-color: #72b1a4;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    margin-top: auto;
 }
 
 

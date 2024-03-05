@@ -2,9 +2,11 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444;
     line-height: 1.5rem;
-    background-color: #539fa2;
-    width: 90%;
+    /* width: 90%; */
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Para que o corpo se estenda até o final da página */
 
 }
 
@@ -23,15 +25,12 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    margin: 2rem;
+    background-color: #72b1a4;
 }
 
 
 .conteiner {
     display: flex;
-    background-color: #72b1a4;
-    /*background-color: blue;*/
     justify-content: center;
     border-radius: 7px;
     flex-wrap: wrap;
@@ -74,8 +73,7 @@ main {
 }
 
 #logo {
-    width: 100%;
-    height: 100%;
+    width: 300px;
     margin-top: 0px;
 }
 
@@ -89,8 +87,11 @@ a {
     color: black;
 }
 
-footer {
-    text-align: center;
-    width: 100%;
-    margin-top: 6rem;
+.foot {
+    background-color: #72b1a4;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    margin-top: auto;
 }
