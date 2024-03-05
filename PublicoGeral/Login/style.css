@@ -12,13 +12,14 @@ body {
 
 @media (max-width: 768px) {
     body {
-        width: 95%;
+        width: 100%;
     }
 
     main{
         overflow-x: auto;
         width: 100%;
-    } 
+    }
+
 }
 
 header{
@@ -80,7 +81,7 @@ a {
 }
 main{
     max-width: 300px;
-    margin: 1rem auto 0;
+    margin: 1rem auto;
     padding: 2rem;
     background-color: #72b1a4;
     border: 0.8px solid #aaa;
@@ -142,7 +143,9 @@ input:valid + span::after{
     background-color: #abccb1;
 }
 
-
+span{
+    color: red;
+}
 /*fieldset:has( div){
     font-weight: bold;
     
