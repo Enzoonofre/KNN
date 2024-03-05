@@ -1,13 +1,39 @@
-header {
-    display: block;
-    justify-content: center;
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #444;
+    line-height: 1.5rem;
+    /* width: 90%; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Para que o corpo se estenda até o final da página */
+
 }
 
-body {
-    background-color: #539fa2;
-    /*background-color: white;*/
-    line-height: 1.5;
-    color: whitesmoke;
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #72b1a4;
+}
+
+.conteiner {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-weight: bold;
+}
+
+.item {
+    background-color: #abccb1;
+    padding: 1rem;
+    border-radius: 12px;
+    margin: 1.5rem 3.5rem;
+    width: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 8px 5px 5px rgba(0, 0, 0, 0.279);
 
 }
 
@@ -18,58 +44,37 @@ a {
     
 }
 
-.conteiner {
-    display: flex;
-    background-color: #72b1a4;
-    /*background-color: blue;*/
-    justify-content: center;
-    border-radius: 7px;
-    flex-wrap: wrap;
-    font-weight: bold;
-}
 
-.item {
-    background-color: #abccb1;
-    padding: 1rem;
-    border-radius: 12px;
-    margin-right: 8%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    width: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
 
 .item a {
     text-align: center; /* Centraliza o texto horizontalmente */
     display: block; /* Para ocupar a largura total do div */
 }
 
+main{
+    margin: 0% 4%;
+}
+
 h2,
 h3 {
     text-align: center;
     color: #c4dbb4;
+    font-weight: bold;
 }
 
 h1 {
     color: #d4e2b6;
-    font-size: 45px;
+    font-weight: bold;
 }
 
 .paragrafo {
     text-indent: 30px;
+    font-weight: bold;
 }
 
 .texto {
     margin: 50px;
-}
-
-.item_header {
-    display: flex;
-    justify-content: center;
-
 }
 
 #img {
@@ -88,5 +93,10 @@ img {
 }
 
 footer{
-    text-align: center;
+    background-color: #72b1a4;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    margin-top: auto;
 }

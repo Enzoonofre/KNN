@@ -1,11 +1,41 @@
-header {
-    display: block;
-}
-
 body {
-    background-color: #539fa2;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.5;
     color: whitesmoke;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #72b1a4;
+}
+
+.conteiner {
+    display: flex;
+    /*background-color: blue;*/
+    justify-content: center;
+    border-radius: 7px;
+    flex-wrap: wrap;
+    font-weight: bold;
+}
+
+
+
+.item{
+    background-color: #abccb1;
+    padding: 1rem;
+    border-radius: 12px;
+    margin: 1.5rem 3.5rem;
+    width: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 8px 5px 5px rgba(0, 0, 0, 0.279);
 }
 
 @media (max-width: 768px) {
@@ -23,46 +53,30 @@ main{
     background-color: #72b1a4;
     border-radius: 7px;
     margin: 1rem;
+    margin-left: 200px;
+    margin-right: 200px;
     padding: 1rem;
+    margin-bottom: px;
 }
 
 
 #logo {
     width: 300px;
-    height: 300px;
-    text-align: center;
+    margin-top: 0px;
     mix-blend-mode: multiply;
 }
 
-.conteiner{
-    display: flex;
-    background-color: #72b1a4;
-    justify-content: center;
-    border-radius: 7px;
-    flex-wrap: wrap;
-    font-weight: bold;
-    margin: 1rem;
-}
 
-.item{
-    background-color: #abccb1;
-    padding: 1rem;
-    border-radius: 12px;
-    margin: 1.5rem 3.5rem;
-    width: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .item a {
     text-align: center;
     display: block; 
 }
 
-h2,h3{
+h2,h3 {
     text-align: center;
     color: #c4dbb4;
+    font-weight: bold;
 }
 h1{
     color: #d4e2b6;
@@ -91,11 +105,17 @@ h1{
 }
 
 footer{
-    text-align: center;
+    background-color: #72b1a4;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    margin-top: auto;
 }
 
 a {
     text-decoration: none;
     color: black;
     font-size: large;
+    
 }
