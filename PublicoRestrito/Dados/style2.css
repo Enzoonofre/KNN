@@ -9,6 +9,16 @@ body {
     
 }
 
+@media (max-width: 768px) {
+    body {
+        width: 95%;
+    }
+
+    main{
+        width: 100%;
+    }
+}
+
 header{
     display: flex;
     justify-content: center;
@@ -29,9 +39,7 @@ header{
     background-color: #abccb1;
     padding: 1rem;
     border-radius: 12px;
-    margin-right: 8%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin: 1.5rem 3.5rem;
     width: 20vh;
     display: flex;
     justify-content: center;

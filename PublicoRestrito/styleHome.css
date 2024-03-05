@@ -8,6 +8,16 @@ body {
 
 }
 
+@media (max-width: 768px) {
+    body {
+        width: 95%;
+    }
+
+    main{
+        overflow-x: auto;
+        width: 100%;
+    } 
+}
 
 header {
     display: flex;
@@ -82,7 +92,5 @@ a {
 footer {
     text-align: center;
     width: 100%;
-    position: fixed;
-    bottom: 0;
-    right: 0;
+    margin-top: 6rem;
 }
