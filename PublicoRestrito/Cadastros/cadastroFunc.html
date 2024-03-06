@@ -36,23 +36,101 @@
                         <input type="text" class="form-control" id="nome" name="nome" required>
                     </div>
                     <div>
-                        <label for="cpf" class="form-label">CPF</label>
-                        <input type="text" class="form-control" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-                            required>
+                        <label for="sexo">Sexo</label>
+                        <select class="form-control" id="sexo" name="sexo" required>
+                            <option value="" selected disabled hidden>Selecione o sexo</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
                     </div>
                     <div>
                         <label for="email" class="form-label">E-mail</label>
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div>
-                        <label for="cargo">Cargo</label>
-                        <input type="text" class="form-control" id="cargo" name="cargo" required>
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="tel" class="form-control" id="telefone" name="telefone" pattern="\d{10,11}"
+                            required>
+                    </div>
+                    <div>
+                        <label for="cep" class="form-label">CEP</label>
+                        <input type="text" class="form-control" id="cep" name="cep" pattern="\d{5}-\d{3}" required>
+                    </div>
+                    <div>
+                        <label for="logradouro" class="form-label">Logradouro</label>
+                        <input type="text" class="form-control" id="logradouro" name="logradouro" required>
+                    </div>
+                    <div>
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" name="cidade" required>
+                    </div>
+                    <div>
+                        <label for="estado" class="form-label">Estado</label>
+                        <select class="form-control" id="estado" name="estado" required>
+                            <option value=""></option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="data_inicio" class="form-label">Data de Início do Contrato</label>
+                        <input type="date" class="form-control" id="data_inicio" name="data_inicio" required>
+                    </div>
+                    <div>
+                        <label for="salario" class="form-label">Salário</label>
+                        <input type="text" class="form-control" id="salario" name="salario" required>
+                    </div>
+                    <div>
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha" required>
+                    </div>
+                    <label for="cargo">Cargo</label>
+                    <select class="form-control" id="cargo" name="cargo" required>
+                        <option value="" selected disabled hidden>Selecione o cargo</option>
+                        <option value="comum">Funcionário Comum</option>
+                        <option value="medico">Funcionário Médico</option>
+                    </select>
+                </div>
+                <div id="medicoCampos" style="display: none;">
+                    <div>
+                        <label for="especialidade">Especialidade</label>
+                        <input type="text" class="form-control" id="especialidade" name="especialidade">
+                    </div>
+                    <div>
+                        <label for="crm">CRM</label>
+                        <input type="text" class="form-control" id="crm" name="crm">
                     </div>
                 </div>
-                <div>    
+
+                <div>
                     <button type="button" class="btn btn-primary" id="botao">Cadastrar</button>
                 </div>
-                </fieldset>
+            </fieldset>
         </form>
     </main>
 
@@ -62,6 +140,7 @@
         </p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
