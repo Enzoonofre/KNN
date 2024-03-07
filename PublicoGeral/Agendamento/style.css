@@ -2,11 +2,10 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444;
     line-height: 1.5rem;
-    /* width: 90%; */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    min-height: 120vh; /* Para que o corpo se estenda até o final da página */
+    min-height: 120vh;
 
 }
 
@@ -21,12 +20,6 @@ body {
     } 
 }
 
-/*Com essse header, o titulo h1 ficou alinhado com a img(logo)*/
-/*header {
-    display: flex;
-    justify-content: center; /* Centraliza os elementos horizontalmente 
-    align-items: center; /* Alinha os elementos verticalmente 
-}*/
 
 header{
     display: flex;
@@ -84,10 +77,6 @@ main{
     border: 0.8px solid #aaa;
     box-shadow: 0px 0px 5px rgb(69, 68, 68);
     border-radius: 10px;
-    /*position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);*/
     box-sizing: border-box;
     font-weight: bold;
 }
