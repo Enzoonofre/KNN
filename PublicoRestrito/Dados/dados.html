@@ -34,6 +34,11 @@
 
     <main>
         <div class="conteiner2">
+            <div class="ckbox">
+                <input type="checkbox" name="med" id="boxMed">
+                <label for="med">Sou médico</label>
+            </div>
+
             <label for="selecione">Selecione a opção desejada:</label>
             <select name="opc" id="selecione">
                 <option value="" selected>Selecione</option>
@@ -41,8 +46,9 @@
                 <option value="pacientesCadastrados.html">Pacientes Cadastrados</option>
                 <option value="enderecos.html">Endereços Auxiliares</option>
                 <option value="agendamentoClientes.html">Agendamentos realizados por clientes</option>
-                <option value="agendamentoMedico.html">Meus Agendamentos(consultas do funcionário logado caso ele seja um médico)</option>
+                <option value="agendamentoMedico.html" id="campoMed" style="display: none;">Meus Agendamentos</option>
             </select>
+
             <button id="btn">OK</button>
         </div>
     </main>
@@ -50,7 +56,7 @@
     <footer>
         <address>Avenida João Naves de Ávila 2121, Santa Mônica, Uberlândia</address>
     </footer>
-    
+
     <script src="redirecionamento.js"></script>
 </body>
 

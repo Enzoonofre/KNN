@@ -100,6 +100,10 @@ select{
     /*padding: 2rem;*/
 }
 
+.ckbox{
+    margin-bottom: 1rem;
+}
+
 label{
     margin-bottom: 1rem;
 }
