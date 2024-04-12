@@ -47,7 +47,7 @@
       ?>
 
     </table>
-    <p><a href="../index.html">Menu de opções</a></p>
+    <p><a href="../dados.html">Voltar para os dados</a></p>
   </div>
 
 </body>

@@ -32,7 +32,7 @@ switch ($acao) {
   case "excluirEndereco":
     $cep = $_GET["cep"] ?? "";
     $pdo = mysqlConnect();
-    Endereco::RemoveByNome($pdo, $cep);
+    Endereco::RemoveByCEP($pdo, $cep);
     header("location: controlador.php?acao=listarEnderecos");
     break;
 
