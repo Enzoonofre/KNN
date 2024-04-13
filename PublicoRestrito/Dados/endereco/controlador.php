@@ -1,7 +1,7 @@
 <?php
 
 require "conexaoMysql.php";
-require "produto.php";
+require "endereco.php";
 
 // resgata a ação a ser executada
 $acao = $_GET['acao'];
@@ -11,7 +11,7 @@ $pdo = mysqlConnect();
 
 switch ($acao) {
   
-  case "adicionarProduto":
+  case "adicionarEndereco":
     // recupera os dados do formulário
     $cep = $_POST["cep"] ?? "";
     $logradouro = $_POST["log"] ?? "";
@@ -26,6 +26,7 @@ switch ($acao) {
     // adiciona o cliente na tabela do banco de dados
     $novoEndereco->AddToDatabase($pdo);
     header("location: controlador.php?acao=listarEnderecos");
+    //header("location: cadastroEnderecos.html");
     break;
 
   //-----------------------------------------------------------------

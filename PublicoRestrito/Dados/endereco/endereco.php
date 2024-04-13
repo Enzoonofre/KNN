@@ -5,7 +5,7 @@ class Endereco
   public $cep;
   public $logradouro;
   public $cidade;
-public $estado;
+  public $estado;
 
   function __construct($cep, $logradouro, $cidade, $estado)
   {
