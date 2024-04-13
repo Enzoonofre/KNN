@@ -22,7 +22,7 @@ class Endereco
     try {
       $sql = <<<SQL
       -- Repare que a coluna Id foi omitida por ser auto_increment
-      INSERT INTO endereco (cep, logradouro, cidade, estado)
+      INSERT INTO Endereco (cep, logradouro, cidade, estado)
       VALUES (?, ?, ?, ?)
       SQL;
 
@@ -48,7 +48,7 @@ class Endereco
     try {
       $sql = <<<SQL
       SELECT cep, logradouro, cidade, estado
-      FROM endereco
+      FROM Endereco
       LIMIT 30
       SQL;
 
@@ -62,7 +62,7 @@ class Endereco
         // Sanitiza os dados produzidos pelo usuário
         // que oferecem risco de X S S
         $cep = htmlspecialchars($row['cep']);
-        $logradouro = htmlspecialchars($row['log']);
+        $logradouro = htmlspecialchars($row['logradouro']);
         $cidade = htmlspecialchars($row['cidade']);
         $estado = htmlspecialchars($row['estado']);
   
@@ -73,7 +73,7 @@ class Endereco
           $cep,
           $logradouro,
           $cidade,
-          $estado,
+          $estado
         );
         $arrayEnderecos[] = $novoEndereco;
       }
@@ -89,7 +89,7 @@ class Endereco
   {
     try {
       $sql = <<<SQL
-      DELETE FROM endereco /*verificar nome no BD da tabela endereco se é igual*/
+      DELETE FROM Endereco /*verificar nome no BD da tabela endereco se é igual*/
       WHERE cep = ?
       LIMIT 1
       SQL;

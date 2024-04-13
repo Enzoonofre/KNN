@@ -34,13 +34,14 @@
       </tr>
 
       <?php
-      foreach ($arrayProdutos as $produto) {
+      foreach ($arrayEnderecos as $endereco) {
         echo <<<HTML
           <tr>
-            <td><a href="controlador.php?acao=excluirProduto&nome=$produto->nome">Excluir</a></td> 
-            <td>$produto->nome</td> 
-            <td>$produto->marca</td>
-            <td>$produto->descricao</td>
+            <td><a href="controlador.php?acao=excluirEndereco&cep=$endereco->cep">Excluir</a></td> 
+            <td>$endereco->cep</td> 
+            <td>$endereco->logradouro</td>
+            <td>$endereco->cidade</td>
+            <td>$endereco->estado</td>
           </tr>      
         HTML;
       }

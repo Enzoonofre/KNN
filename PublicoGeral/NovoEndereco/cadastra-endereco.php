@@ -1,6 +1,6 @@
 <?php
 
-require "../PublicoRestrito/Dados/endereco/conexaoMysql.php";
+require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
 // Resgata os dados de Endereco
