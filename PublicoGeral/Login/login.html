@@ -39,7 +39,7 @@
     <main>
         <h2>Login</h2>
 
-        <form id="cadastro" action="cadastraCliente.php" method="post" enctype="multipart/form-data">
+        <form id="cadastro" method="POST" action="cadastraCliente.php" enctype="multipart/form-data">
             <fieldset>
                 <!--<legend class="campo">Endereço de Entrega</legend>-->
                 <div>
@@ -54,7 +54,10 @@
                 </div>
             </fieldset>
 
-            <button id="botao"><span class="material-symbols-outlined">login</span>Entrar</button>
+            <button id="botao" type="submit">Entrar</button>
+            <div>
+                <p id="loginFailMsg">E-mail e/ou senha incorreta. Por favor, tente novamente.</p>
+            </div>
 
         </form>
 
@@ -63,8 +66,50 @@
     <footer>
         <address>Avenida João Naves de Ávila 2121, Santa Mônica, Uberlândia</address>
     </footer>
+    <!-- <script>
 
-    <script src="redirecionamentoLogin.js"></script>
+        function sendForm(form) {
+          
+          let xhr = new XMLHttpRequest();
+          
+          xhr.open("POST", form.getAttribute("action"));
+          xhr.responseType = 'json';
+    
+          xhr.onload = function () {
+            if (xhr.status != 200 || xhr.response === null) {
+              console.log("A resposta não pode ser obtida ");
+              console.log(xhr.status);
+              return;
+            }
+    
+            let loginResponse = xhr.response;
+            if (loginResponse.success)
+              window.location = loginResponse.detail;
+            else {
+              document.querySelector("#loginFailMsg").style.display = 'block';
+              form.senha.value = "";
+              form.senha.focus();
+            }
+          }      
+    
+          xhr.onerror = function () {
+            console.error("Erro de rede - requisição não finalizada");
+          };
+    
+          xhr.send(new FormData(form));
+        }
+    
+        window.onload = function () {
+          const form = document.querySelector("#cadastro");
+          form.onsubmit = function (e) {
+            sendForm(form);
+            e.preventDefault();
+          }
+        }
+    
+      </script> -->
+    
+
 </body>
 
 
