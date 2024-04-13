@@ -37,7 +37,7 @@
     <main>
         <h2>Novo Endereço</h2>
 
-        <form action="cadastraCliente.php" method="post" enctype="multipart/form-data">
+        <form action="/PublicoRestrito/Dados/endereco/controlador.php?acao=adicionarEndereco" method="POST">
             <fieldset>
                 <!--<legend class="campo">Endereço de Entrega</legend>-->
 
@@ -59,7 +59,7 @@
                 </div>
             </fieldset>
 
-            <button id="botao">Cadastrar</button>
+            <button type="submit" id="botao">Cadastrar</button>
 
         </form>
 
