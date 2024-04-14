@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<?php
+
+require "../conexaoMysql.php";
+$pdo = mysqlConnect();
+
+$sql = 'SELECT Nome FROM Pessoa INNER JOIN Medico ON Pessoa.Codigo = Medico.Codigo';
+$stmt = $pdo->query($sql);
+$medicos = $stmt->fetchAll();
+
+$sql2 = 'SELECT DISTINCT Especialidade FROM Medico';
+$stmt2 = $pdo->query($sql2);
+$especialidades = $stmt2->fetchAll();
+?>
+
 <html lang="pt-BR">
 
 <head>
@@ -40,7 +53,7 @@
         <form name="consulta" action="cadastra-agendamento.php" method="post">
             <fieldset>
                 <legend>Dados Pessoais</legend>
-    
+
                 <div>
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome" minlength="2" maxlength="50" autofocus>
@@ -48,7 +61,7 @@
                 </div>
                 <div>
                     <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" >
+                    <input type="email" id="email" name="email">
                     <span></span>
                 </div>
                 <div>
@@ -63,19 +76,24 @@
 
             <fieldset>
                 <div>
+                    <!--Verificar por que o foreach repete duas vezes a especialidade-->
                     <label for="especialidade"> Especialidade médica:</label>
-                    <select name="select" id="especialidade">
+                    <select name="especialidade" id="especialidade">
                         <option value="" selected>Selecione</option>
-                        <option value="valor2">Cirurgiao</option>
-                        <option value="valor3">Ortopedista</option>
+                        <?php foreach ($especialidades as $especialidade): ?>
+                            <option value="<?= $especialidade['Especialidade']; ?>"><?= $especialidade['Especialidade']; ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div>
                     <label for="nomeMed">Nome médico:</label>
                     <select name="nomeMed" id="nomeMed">
                         <option value="" selected>Selecione</option>
-                        <option value="nome2">Joao</option>
-                        <option value="nome3">Maria</option>
+                        <?php foreach ($medicos as $medico): ?>
+                            <option value="<?= htmlspecialchars($medico['Nome'], ENT_QUOTES, 'UTF-8'); ?>">
+                                <?= htmlspecialchars($medico['Nome'], ENT_QUOTES, 'UTF-8'); ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div>
@@ -83,19 +101,20 @@
                     <input type="date" id="data" name="data">
                 </div>
                 <div>
+                    <!--Adicionar horario ao banco de dados-->
                     <label for="horario">Horário:</label>
                     <select name="horario" id="horario">
                         <option value="" selected>Selecione</option>
-                        <option value="hr2">8:00</option>
-                        <option value="hr3">9:00</option>
-                        <option value="hr4">10:00</option>
-                        <option value="hr5">11:00</option>
-                        <option value="hr6">12:00</option>
-                        <option value="hr7">13:00</option>
-                        <option value="hr8">14:00</option>
-                        <option value="hr9">15:00</option>
-                        <option value="hr10">16:00</option>
-                        <option value="hr11">17:00</option>
+                        <option value="08:00:00">8:00</option>
+                        <option value="09:00:00">9:00</option>
+                        <option value="10:00:00">10:00</option>
+                        <option value="11:00:00">11:00</option>
+                        <option value="12:00:00">12:00</option>
+                        <option value="13:00:00">13:00</option>
+                        <option value="14:00:00">14:00</option>
+                        <option value="15:00:00">15:00</option>
+                        <option value="16:00:00">16:00</option>
+                        <option value="17:00:00">17:00</option>
                     </select>
                 </div>
             </fieldset>
