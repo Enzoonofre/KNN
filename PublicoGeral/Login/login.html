@@ -55,8 +55,8 @@
             </fieldset>
 
             <button id="botao" type="submit">Entrar</button>
-            <div>
-                <p id="loginFailMsg">E-mail e/ou senha incorreta. Por favor, tente novamente.</p>
+            <div id = "sla" style="display: none;">
+                <span>E-mail e/ou senha incorreta. Por favor, tente novamente.</span>
             </div>
 
         </form>
@@ -66,7 +66,8 @@
     <footer>
         <address>Avenida João Naves de Ávila 2121, Santa Mônica, Uberlândia</address>
     </footer>
-    <!-- <script>
+
+     <script>
 
         function sendForm(form) {
           
@@ -74,6 +75,7 @@
           
           xhr.open("POST", form.getAttribute("action"));
           xhr.responseType = 'json';
+          
     
           xhr.onload = function () {
             if (xhr.status != 200 || xhr.response === null) {
@@ -85,8 +87,8 @@
             let loginResponse = xhr.response;
             if (loginResponse.success)
               window.location = loginResponse.detail;
-            else {
-              document.querySelector("#loginFailMsg").style.display = 'block';
+            if(loginResponse.success == false){
+              document.querySelector("#sla").style.display = 'block';
               form.senha.value = "";
               form.senha.focus();
             }
@@ -107,7 +109,7 @@
           }
         }
     
-      </script> -->
+      </script> 
     
 
 </body>
