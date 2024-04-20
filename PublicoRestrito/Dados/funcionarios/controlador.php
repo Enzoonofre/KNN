@@ -17,6 +17,10 @@ switch ($acao) {
     $sexo = $_POST["sexo"] ?? "";
     $email = $_POST["email"] ?? "";
     $telefone = $_POST["telefone"] ?? "";
+    $cep = $_POST["cep"] ?? "";
+    $logradouro = $_POST["log"] ?? "";
+    $cidade = $_POST["cidade"] ?? "";
+    $estado = $_POST["estado"] ?? "";
     $data_inicio = $_POST["data_inicio"] ?? "";
     $salario = $_POST["salario"] ?? "";
     $senha = $_POST["senha"] ?? "";
@@ -24,7 +28,7 @@ switch ($acao) {
 
     // Cria um novo funcionário com os dados fornecidos
     $novoFuncionario = new Funcionario(
-      $nome, $sexo, $email, $telefone, $data_inicio, $salario, $senha, $cargo
+      $nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $estado, $data_inicio, $salario, $senha, $cargo
     );
 
     // Adiciona o funcionário ao banco de dados

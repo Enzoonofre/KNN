@@ -6,16 +6,24 @@ class Paciente
   public $sexo;
   public $email;
   public $telefone;
+  public $cep;
+  public $logradouro;
+  public $cidade;
+  public $estado;
   public $peso;
   public $altura;
   public $tipo_sanguineo;
 
-  function __construct($nome, $sexo, $email, $telefone, $peso, $altura, $tipo_sanguineo)
+  function __construct($nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $estado, $peso, $altura, $tipo_sanguineo)
   {
     $this->nome = $nome;
     $this->sexo = $sexo;
     $this->email = $email;
     $this->telefone = $telefone;
+    $this->cep = $cep;
+    $this->logradouro = $logradouro;
+    $this->cidade = $cidade;
+    $this->estado = $estado;
     $this->peso = $peso;
     $this->altura = $altura;
     $this->tipo_sanguineo = $tipo_sanguineo;
@@ -27,14 +35,14 @@ class Paciente
   {
     try {
       $sql = <<<SQL
-      INSERT INTO Paciente (nome, sexo, email, telefone, peso, altura, tipo_sanguineo)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO Paciente (nome, sexo, email, telefone, cep, logradouro, cidade, estado, peso, altura, tipo_sanguineo)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       SQL;
 
       // Utiliza prepared statements para prevenir
       // ataques do tipo SQL Injection
       $stmt = $pdo->prepare($sql);
-      $stmt->execute([$this->nome, $this->sexo, $this->email, $this->telefone, $this->peso, $this->altura, $this->tipo_sanguineo]);
+      $stmt->execute([$this->nome, $this->sexo, $this->email, $this->telefone, $this->cep, $this->logradouro, $this->cidade, $this->estado, $this->peso, $this->altura, $this->tipo_sanguineo]);
     } catch (Exception $e) {
       exit('Falha inesperada: ' . $e->getMessage());
     }
@@ -46,7 +54,7 @@ class Paciente
   {
     try {
       $sql = <<<SQL
-      SELECT nome, sexo, email, telefone, peso, altura, tipo_sanguineo
+      SELECT nome, sexo, email, telefone, cep, logradouro, cidade, estado, peso, altura, tipo_sanguineo
       FROM Paciente
       SQL;
 
@@ -58,6 +66,10 @@ class Paciente
         $sexo = htmlspecialchars($row['sexo']);
         $email = htmlspecialchars($row['email']);
         $telefone = htmlspecialchars($row['telefone']);
+        $cep = htmlspecialchars($row['cep']);
+        $logradouro = htmlspecialchars($row['logradouro']);
+        $cidade = htmlspecialchars($row['cidade']);
+        $estado = htmlspecialchars($row['estado']);
         $peso = htmlspecialchars($row['peso']);
         $altura = htmlspecialchars($row['altura']);
         $tipo_sanguineo = htmlspecialchars($row['tipo_sanguineo']);
@@ -67,6 +79,10 @@ class Paciente
           $sexo,
           $email,
           $telefone,
+          $cep,
+          $logradouro,
+          $cidade,
+          $estado,
           $peso,
           $altura,
           $tipo_sanguineo

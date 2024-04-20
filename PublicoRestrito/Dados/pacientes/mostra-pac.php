@@ -29,23 +29,34 @@
                 <th>Sexo</th>
                 <th>Email</th>
                 <th>Telefone</th>
+                <th>CEP</th>
+                <th>Logradouro</th>
+                <th>Cidade</th>
+                <th>Estado</th>
                 <th>Peso</th>
                 <th>Altura</th>
                 <th>Tipo Sanguíneo</th>
             </tr>
 
-            <?php foreach ($arrayPacientes as $paciente) : ?>
+            <?php foreach ($arrayPacientes as $paciente) {
+                echo <<<HTML
                 <tr>
                     <td><a href="controlador.php?acao=excluirPaciente&idPaciente=<?= $paciente->id ?>">Excluir</a></td>
-                    <td><?= $paciente->nome ?></td>
-                    <td><?= $paciente->sexo ?></td>
-                    <td><?= $paciente->email ?></td>
-                    <td><?= $paciente->telefone ?></td>
-                    <td><?= $paciente->peso ?></td>
-                    <td><?= $paciente->altura ?></td>
-                    <td><?= $paciente->tipo_sanguineo ?></td>
+                    <td>$paciente->nome</td>
+                    <td>$paciente->sexo</td>
+                    <td>$paciente->email</td>
+                    <td>$paciente->telefone</td>
+                    <td>$paciente->cep</td> 
+                    <td>$paciente->logradouro</td>
+                    <td>$paciente->cidade</td>
+                    <td>$paciente->estado</td>
+                    <td>$paciente->peso</td>
+                    <td>$paciente->altura</td>
+                    <td>$paciente->tipo_sanguineo</td>
                 </tr>
-            <?php endforeach; ?>
+            HTML;
+            }
+            ?>
 
         </table>
         <p><a href="../dados.html">Voltar para os dados</a></p>

@@ -6,17 +6,25 @@ class Funcionario
   public $sexo;
   public $email;
   public $telefone;
+  public $cep;
+  public $logradouro;
+  public $cidade;
+  public $estado;
   public $data_inicio;
   public $salario;
   public $senha;
   public $cargo;
 
-  function __construct($nome, $sexo, $email, $telefone, $data_inicio, $salario, $senha, $cargo)
+  function __construct($nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $estado, $data_inicio, $salario, $senha, $cargo)
   {
     $this->nome = $nome;
     $this->sexo = $sexo;
     $this->email = $email;
     $this->telefone = $telefone;
+    $this->cep = $cep;
+    $this->logradouro = $logradouro;
+    $this->cidade = $cidade;
+    $this->estado = $estado;
     $this->data_inicio = $data_inicio;
     $this->salario = $salario;
     $this->senha = $senha;
@@ -30,15 +38,15 @@ class Funcionario
     try {
       $sql = <<<SQL
       -- Repare que a coluna Id foi omitida por ser auto_increment
-      INSERT INTO Funcionario (nome, sexo, email, telefone, data_inicio, salario, senha, cargo)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO Funcionario (nome, sexo, email, telefone, cep, logradouro, cidade, estado, data_inicio, salario, senha, cargo)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       SQL;
 
       // Neste caso utilize prepared statements para prevenir
       // ataques do tipo S-Q-L Inj., pois precisamos
       // cadastrar dados fornecidos pelo usuário 
       $stmt = $pdo->prepare($sql);
-      $stmt->execute([$this->nome, $this->sexo, $this->email, $this->telefone, $this->data_inicio, $this->salario, $this->senha, $this->cargo]);
+      $stmt->execute([$this->nome, $this->sexo, $this->email, $this->telefone, $this->cep, $this->logradouro, $this->cidade, $this->estado, $this->data_inicio, $this->salario, $this->senha, $this->cargo]);
     } catch (Exception $e) {
       exit('Falha inesperada: ' . $e->getMessage());
     }
@@ -50,7 +58,7 @@ class Funcionario
   {
     try {
       $sql = <<<SQL
-      SELECT nome, sexo, email, telefone, data_inicio, salario, senha, cargo
+      SELECT nome, sexo, email, telefone, cep, logradouro, cidade, estado, data_inicio, salario, senha, cargo
       FROM Funcionario
       SQL;
 
@@ -67,6 +75,10 @@ class Funcionario
         $sexo = htmlspecialchars($row['sexo']);
         $email = htmlspecialchars($row['email']);
         $telefone = htmlspecialchars($row['telefone']);
+        $cep = htmlspecialchars($row['cep']);
+        $logradouro = htmlspecialchars($row['logradouro']);
+        $cidade = htmlspecialchars($row['cidade']);
+        $estado = htmlspecialchars($row['estado']);
         $data_inicio = htmlspecialchars($row['data_inicio']);
         $salario = htmlspecialchars($row['salario']);
         $senha = htmlspecialchars($row['senha']);
@@ -79,6 +91,10 @@ class Funcionario
           $sexo,
           $email,
           $telefone,
+          $cep,
+          $logradouro,
+          $cidade,
+          $estado,
           $data_inicio,
           $salario,
           $senha,

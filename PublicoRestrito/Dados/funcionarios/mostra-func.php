@@ -28,6 +28,10 @@
         <th>Sexo</th>
         <th>Email</th>
         <th>Telefone</th>
+        <th>CEP</th>
+        <th>Logradouro</th>
+        <th>Cidade</th>
+        <th>Estado</th>
         <th>Data de Início</th>
         <th>Salário</th>
         <th>Cargo</th>
@@ -42,6 +46,10 @@
             <td>$funcionario->sexo</td>
             <td>$funcionario->email</td>
             <td>$funcionario->telefone</td>
+            <td>$funcionario->cep</td> 
+            <td>$funcionario->logradouro</td>
+            <td>$funcionario->cidade</td>
+            <td>$funcionario->estado</td>
             <td>$funcionario->data_inicio</td>
             <td>$funcionario->salario</td>
             <td>$funcionario->cargo</td>

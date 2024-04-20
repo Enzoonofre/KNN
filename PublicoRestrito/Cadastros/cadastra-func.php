@@ -8,14 +8,18 @@ $nome = $_POST["nome"] ?? "";
 $sexo = $_POST["sexo"] ?? "";
 $email = $_POST["email"] ?? "";
 $telefone = $_POST["telefone"] ?? "";
+$cep = $_POST["cep"] ?? "";
+$logradouro = $_POST["log"] ?? "";
+$cidade = $_POST["cidade"] ?? "";
+$estado = $_POST["estado"] ?? "";
 $data_inicio = $_POST["data_inicio"] ?? "";
 $salario = $_POST["salario"] ?? "";
 $senha = $_POST["senha"] ?? "";
 $cargo = $_POST["cargo"] ?? "";
 
 $sql1 = <<<SQL
-  INSERT INTO Funcionario (nome, sexo, email, telefone, data_inicio, salario, senha, cargo)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  INSERT INTO Funcionario (nome, sexo, email, telefone, cep, logradouro, cidade, estado, data_inicio, salario, senha, cargo)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   SQL;
 
 try {

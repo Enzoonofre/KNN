@@ -17,6 +17,10 @@ switch ($acao) {
     $sexo = $_POST["sexo"] ?? "";
     $email = $_POST["email"] ?? "";
     $telefone = $_POST["telefone"] ?? "";
+    $cep = $_POST["cep"] ?? "";
+    $logradouro = $_POST["log"] ?? "";
+    $cidade = $_POST["cidade"] ?? "";
+    $estado = $_POST["estado"] ?? "";
     $peso = $_POST["peso"] ?? "";
     $altura = $_POST["altura"] ?? "";
     $tipo_sanguineo = $_POST["tipo_sanguineo"] ?? "";
@@ -27,6 +31,10 @@ switch ($acao) {
       $sexo,
       $email,
       $telefone,
+      $cep, 
+      $logradouro, 
+      $cidade, 
+      $estado,
       $peso,
       $altura,
       $tipo_sanguineo
