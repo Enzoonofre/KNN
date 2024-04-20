@@ -1,3 +1,10 @@
+<?php
+session_start();
+/*Teste se sem chamar um ExitWhenNotLoggedIn() o usuario consegue acessar este pag digitando
+o caminho diretamente no navegador (Testar isso para todas as pag do acesso Restrito)*/
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -18,7 +25,7 @@
     <nav>
         <div class="conteiner">
             <div class="item">
-                <a href="../HomeRestrito.html">Home</a>
+                <a href="../homeRestrito.php">Home</a>
             </div>
             <div class="item">
                 <a href="../Cadastros/cadastroFunc.html">Cadastro de Funcionarios</a>
@@ -45,8 +52,11 @@
                 <option value="funcionariosCad.html">Funcionarios Cadastrados</option>
                 <option value="pacientesCadastrados.html">Pacientes Cadastrados</option>
                 <option value="endereco/controlador.php?acao=listarEnderecos">Endereços Auxiliares</option>
-                <option value="agendamentos/controlador.php?acao=listarAgendamentos">Agendamentos realizados por clientes</option>
-                <option value="agendamentoMedico.html" id="campoMed" style="display: none;">Meus Agendamentos</option>
+                <option value="agendamentos/controlador.php?acao=listarAgendamentos">Agendamentos realizados por
+                    clientes</option>
+                <?php if (isset($_SESSION['is_doctor'])): ?>
+                    <option value="meusAgendamentos/controlador.php?acao=listarAgendamentosMedico" id="campoMed">Meus Agendamentos</option>
+                <?php endif; ?>
             </select>
 
             <button type="submit" id="btn">OK</button>

@@ -1,6 +1,7 @@
 <?php
 
-
+/*Talvez trocar o nome do arquivo seja melhor, pois não está cadastrando nenhum cliente,
+mas sim apenas logando*/
 
 class RequestResponse
 {
@@ -53,9 +54,9 @@ if (checkLogin($pdo, $email, $senha)){
   $_SESSION['loggedIn'] = true;
   $_SESSION['user'] = $email;
 
-  $response = new RequestResponse(true, 'teste.php');
+  $response = new RequestResponse(true, '../../PublicoRestrito/homeRestrito.php');
 }
 else
-  $response = new RequestResponse(false, 'teste2.html');
+  $response = new RequestResponse(false, '');
 header('Content-type: application/json');
 echo json_encode($response);

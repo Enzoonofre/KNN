@@ -1,13 +1,24 @@
 <?php
 
 require "../PublicoGeral/conexaoMysql.php";
-require "../PublicoGeral/Login/sessionVerification.php";
+require "sessionVerification.php";
 
 session_start();
 exitWhenNotLoggedIn();
 
 $pdo = mysqlConnect();
 
+$sql = <<<SQL
+SELECT * FROM Medico m JOIN Pessoa p ON m.Codigo = p.Codigo WHERE p.Email = ?
+SQL;
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$_SESSION['user']]);
+$user = $stmt->fetch();
+
+if ($user) {
+  $_SESSION['is_doctor'] = true;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,9 +31,9 @@ $pdo = mysqlConnect();
 </head>
 
 <body>
-  <script>
+  <!--<script>
     alert(document.cookie);
-  </script>
+  </script>-->
 
   <header>
     <div>
@@ -42,7 +53,7 @@ $pdo = mysqlConnect();
         <a href="Cadastros/cadastroPaciente.html">Cadastro de Pacientes</a>
       </div>
       <div class="item">
-        <a href="Dados/dados.html">Listagem de Dados</a>
+        <a href="Dados/dados.php">Listagem de Dados</a>
       </div>
     </div>
   </nav>
@@ -55,7 +66,7 @@ $pdo = mysqlConnect();
       <li>Cadastrar Paciente</li>
       <li>Ver Listagem de Dados</li>
     </ul>
-    <a href="logout.php">SAIR<a>
+    <a href="../PublicoGeral/Login/logout.php">SAIR<a>
   </main>
 
 </body>
