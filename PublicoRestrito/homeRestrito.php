@@ -43,9 +43,6 @@ if ($user) {
 
   <nav>
     <div class="conteiner">
-      <!--<div class="item">
-                <a href="HomeRestrito.html">Home</a>
-            </div>-->
       <div class="item">
         <a href="Cadastros/cadastroFunc.html">Cadastro de Funcionarios</a>
       </div>

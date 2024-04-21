@@ -53,7 +53,7 @@ $arrayPacientes = Paciente::GetData($pdo);
                 <th>Tipo Sanguíneo</th>
             </tr>
 
-            <?php 
+            <?php
             foreach ($arrayPacientes as $paciente) {
                 echo <<<HTML
                 <tr>
