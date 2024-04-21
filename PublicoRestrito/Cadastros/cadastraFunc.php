@@ -67,7 +67,6 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$nome, $sexo, $email, $telefone]);
 $codigo_pessoa = $pdo->lastInsertId();
 
-  // Insere dados na tabela Pessoa
 $sql = <<<SQL
 INSERT INTO Endereco (codigo_pessoa, CEP, Logradouro, Cidade, Estado)
 VALUES (?, ?, ?, ?, ?)
