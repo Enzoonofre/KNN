@@ -106,7 +106,7 @@ $especialidades = $stmt2->fetchAll();
                     <label for="horario">Horário:</label>
                     <select name="horario" id="horario">
                         <option value="" selected>Selecione</option>
-                        <!--<option value="08:00:00">8:00</option>
+                        <option value="08:00:00">8:00</option>
                         <option value="09:00:00">9:00</option>
                         <option value="10:00:00">10:00</option>
                         <option value="11:00:00">11:00</option>
@@ -115,7 +115,7 @@ $especialidades = $stmt2->fetchAll();
                         <option value="14:00:00">14:00</option>
                         <option value="15:00:00">15:00</option>
                         <option value="16:00:00">16:00</option>
-                        <option value="17:00:00">17:00</option>-->
+                        <option value="17:00:00">17:00</option>
                     </select>
                 </div>
             </fieldset>
@@ -131,27 +131,72 @@ $especialidades = $stmt2->fetchAll();
     </footer>
 
     <script>
-        document.getElementById('nomeMed').addEventListener('change', function () {
-            var medico = this.value;
-            var data = document.getElementById('data').value;
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'horarios-disponiveis.php', true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.onload = function () {
-                if (this.status == 200) {
-                    var horarios = JSON.parse(this.responseText);
-                    var select = document.getElementById('horario');
-                    select.innerHTML = '';
-                    for (var i = 0; i < horarios.length; i++) {
-                        var opt = document.createElement('option');
-                        opt.value = horarios[i];
-                        opt.innerHTML = horarios[i];
-                        select.appendChild(opt);
+        async function carregarHorarios() {
+            try {
+                const selectEspecialidade = document.querySelector("#especialidade");
+                const selectMedico = document.querySelector("#nomeMed");
+                const data = document.querySelector("#data");
+                const response = await fetch(`horarios-disponiveis.php?especialidade=${selectEspecialidade.value}&nomeMed=${selectMedico.value}&data=${data.value}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const horariosIndisponiveis = await response.json();
+
+                const selectHorario = document.querySelector("#horario");
+                selectHorario.innerHTML = '';
+                for (let horario of horarios) {
+                    if (!horariosIndisponiveis.some(horarioIndisponivel => horarioIndisponivel.Horario === horario.value)) {
+                        selectHorario.appendChild(horario.cloneNode(true));
                     }
                 }
-            };
-            xhr.send('data=' + data + '&medico=' + medico);
-        });
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+        async function carregarMedicos() {
+            try {
+                const selectEspecialidade = document.querySelector("#especialidade");
+                const response = await fetch(`medicos-por-especialidade.php?especialidade=${selectEspecialidade.value}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const medicosDisponiveis = await response.json();
+
+                const selectMedico = document.querySelector("#nomeMed");
+
+                // Remove all options that are not the "Selecione" option
+                for (let i = selectMedico.options.length - 1; i >= 0; i--) {
+                    if (selectMedico.options[i].value !== '') {
+                        selectMedico.remove(i);
+                    }
+                }
+
+                for (let medico of medicos) {
+                    if (medicosDisponiveis.some(medicoDisponivel => medicoDisponivel.Nome === medico.value)) {
+                        selectMedico.appendChild(medico.cloneNode(true));
+                    }
+                }
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+        window.onload = function () {
+            const selectHorario = document.querySelector("#horario");
+            horarios = Array.from(selectHorario.options);
+
+            const selectMedico = document.querySelector("#nomeMed");
+            medicos = Array.from(selectMedico.options);
+
+            const selectEspecialidade = document.querySelector("#especialidade");
+            const inputMedico = document.getElementById('nomeMed');
+            const inputData = document.getElementById('data');
+
+            inputMedico.onchange = () => carregarHorarios();
+            inputData.onchange = () => carregarHorarios();
+            selectEspecialidade.onchange = () => carregarMedicos();
+        };
     </script>
 </body>
 
