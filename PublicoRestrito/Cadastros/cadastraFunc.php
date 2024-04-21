@@ -58,16 +58,35 @@ $pdo->beginTransaction();
 try {
   // Insere dados na tabela Pessoa
   $sql = <<<SQL
-  INSERT INTO Pessoa (Nome, Sexo, Email, Telefone, CEP, Logradouro, Cidade, Estado)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  INSERT INTO Pessoa (Nome, Sexo, Email, Telefone)
+  VALUES (?, ?, ?, ?)
   SQL;
 
+<<<<<<< HEAD
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $estado]);
   $codigo_pessoa = $pdo->lastInsertId();
 
   // Insere dados na tabela Funcionario
   $sql = <<<SQL
+=======
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$nome, $sexo, $email, $telefone]);
+$codigo_pessoa = $pdo->lastInsertId();
+
+  // Insere dados na tabela Pessoa
+$sql = <<<SQL
+INSERT INTO Endereco (codigo_pessoa, CEP, Logradouro, Cidade, Estado)
+VALUES (?, ?, ?, ?, ?)
+SQL;
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$codigo_pessoa, $cep, $logradouro, $cidade,$estado]);
+
+
+// Insere dados na tabela Funcionario
+$sql = <<<SQL
+>>>>>>> 7e9b397b8d0c44d7b8bbf4ac8fbed1dceabeaa2b
       INSERT INTO Funcionario (Codigo, DataContrato, Salario, SenhaHash)
       VALUES (?, ?, ?, ?)
   SQL;
