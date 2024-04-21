@@ -30,9 +30,9 @@ class Funcionario
       while ($row = $stmt->fetch()) {
         // Sanitiza os dados produzidos pelo usuário
         // que oferecem risco de X S S
-        $nome = htmlspecialchars($row['nome']);
-        $dataContrato = htmlspecialchars($row['data_inicio']);
-        $salario = htmlspecialchars($row['salario']);
+        $nome = htmlspecialchars($row['Nome']);
+        $dataContrato = htmlspecialchars($row['DataContrato']);
+        $salario = htmlspecialchars($row['Salario']);
   
 
         // Cria um novo objeto do tipo Cliente e adiciona

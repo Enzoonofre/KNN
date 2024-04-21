@@ -32,7 +32,6 @@ $pdo = mysqlConnect();
     <h3>Funcionários Cadastrados</h3>
     <table class="table table-striped table-hover">
       <tr>
-        <th></th>
         <th>Nome</th>
         <th>Data de Início</th>
         <th>Salário</th>
