@@ -1,3 +1,12 @@
+<?php
+ require 'paciente.php';
+ require 'conexaoMysql.php';
+
+$pdo = mysqlConnect();
+
+ $arrayPacientes = Paciente::GetData($pdo);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -26,13 +35,6 @@
             <tr>
                 <th></th>
                 <th>Nome</th>
-                <th>Sexo</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>CEP</th>
-                <th>Logradouro</th>
-                <th>Cidade</th>
-                <th>Estado</th>
                 <th>Peso</th>
                 <th>Altura</th>
                 <th>Tipo Sanguíneo</th>
@@ -42,23 +44,16 @@
                 echo <<<HTML
                 <tr>
                     <td>$paciente->nome</td>
-                    <td>$paciente->sexo</td>
-                    <td>$paciente->email</td>
-                    <td>$paciente->telefone</td>
-                    <td>$paciente->cep</td> 
-                    <td>$paciente->logradouro</td>
-                    <td>$paciente->cidade</td>
-                    <td>$paciente->estado</td>
                     <td>$paciente->peso</td>
                     <td>$paciente->altura</td>
-                    <td>$paciente->tipo_sanguineo</td>
+                    <td>$paciente->tipoSanguineo</td>
                 </tr>
             HTML;
             }
             ?>
 
         </table>
-        <p><a href="../dados.html">Voltar para os dados</a></p>
+        <p><a href="../dados.php">Voltar para os dados</a></p>
     </div>
 
 </body>

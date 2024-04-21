@@ -1,3 +1,12 @@
+<?php
+ require 'funcionario.php';
+ require 'conexaoMysql.php';
+
+$pdo = mysqlConnect();
+
+ $arrayFuncionarios = Funcionario::GetData($pdo);
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -25,18 +34,8 @@
       <tr>
         <th></th>
         <th>Nome</th>
-        <th>Sexo</th>
-        <th>Email</th>
-        <th>Telefone</th>
-        <th>CEP</th>
-        <th>Logradouro</th>
-        <th>Cidade</th>
-        <th>Estado</th>
         <th>Data de Início</th>
         <th>Salário</th>
-        <th>Cargo</th>
-        <th>Especialidade</th>
-        <th>CRM</th>
       </tr>
 
       <?php
@@ -44,25 +43,15 @@
         echo <<<HTML
           <tr>
             <td>$funcionario->nome</td> 
-            <td>$funcionario->sexo</td>
-            <td>$funcionario->email</td>
-            <td>$funcionario->telefone</td>
-            <td>$funcionario->cep</td> 
-            <td>$funcionario->logradouro</td>
-            <td>$funcionario->cidade</td>
-            <td>$funcionario->estado</td>
-            <td>$funcionario->data_inicio</td>
-            <td>$funcionario->salario</td>
-            <td>$funcionario->cargo</td>
-            <td>$funcionario->especialidade</td>
-            <td>$funcionario->crm</td>
+            <td>$funcionario->dataContrato</td>
+            <td>$funcionario->Salario</td>
           </tr>      
         HTML;
       }
       ?>
 
     </table>
-    <p><a href="../dados.html">Voltar para os dados</a></p>
+    <p><a href="../dados.php">Voltar para os dados</a></p>
   </div>
 
 </body>
