@@ -3,7 +3,7 @@
 class Agendamento
 {
   public $nome;
-  public $sexo;//falata mexer em tudo neste arquivo
+  public $sexo;
   public $data;
   public $hora;
   public $codigoMed;
@@ -19,7 +19,7 @@ class Agendamento
 
   // Adiciona os dados do objeto (endereco)
   // na tabela endereco do banco de dados
-  public function AddToDatabase($pdo)
+ /* public function AddToDatabase($pdo)
   {
     try {
       $sql = <<<SQL
@@ -36,7 +36,7 @@ class Agendamento
     } catch (Exception $e) {
       exit('Falha inesperada: ' . $e->getMessage());
     }
-  }
+  }*/
 
   // Método estático para retornar, na forma de um
   // array de objetos, os 30 enderecos iniciais da tabela.
@@ -45,13 +45,12 @@ class Agendamento
   // estão associados à classe em si, e não a uma instância.
   // No PHP devem ser chamados com a sintaxe:
   // NomeDaClasse::NomeDoMétodo
-  public static function GetFirst30($pdo)
+  public static function GetData($pdo)
   {
     try {
       $sql = <<<SQL
       SELECT Nome, Sexo, Data, Horario, CodigoMedico
       FROM Agenda
-      LIMIT 30
       SQL;
 
       // Neste exemplo não é necessário utilizar prepared statements
@@ -89,11 +88,11 @@ class Agendamento
 
   // Método estático para excluir um cliente
   // dado o seu CPF
-  public static function RemoveByData($pdo, $data)
+  /*public static function RemoveByData($pdo, $data)
   {
     try {
       $sql = <<<SQL
-      DELETE FROM Agenda /*verificar nome no BD da tabela endereco se é igual*/
+      DELETE FROM Agenda /*verificar nome no BD da tabela endereco se é igual
       WHERE Data = ?
       LIMIT 1
       SQL;
@@ -105,5 +104,5 @@ class Agendamento
     } catch (Exception $e) {
       exit('Falha inesperada: ' . $e->getMessage());
     }
-  }
+  }*/
 }

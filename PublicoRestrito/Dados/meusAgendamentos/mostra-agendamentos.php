@@ -1,3 +1,14 @@
+<?php
+  require "agendamentoMedico.php";
+  require "conexaoMysql.php";
+  $pdo = mysqlConnect();
+
+  session_start();
+  $email = $_SESSION['user'];
+
+  $arrayAgendamentosMedico = AgendamentoMedico::GetData($pdo, $email);
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -32,7 +43,7 @@
         <a href="../../Cadastros/cadastroPaciente.html">Cadastro de Pacientes</a>
       </div>
       <div class="item">
-        <a href="../dados.html">Listagem de Dados</a>
+        <a href="../dados.php">Listagem de Dados</a>
       </div>
     </div>
   </nav>
@@ -41,7 +52,7 @@
     <h3>Agendamentos</h3>
     <table class="table table-striped table-hover">
       <tr>
-        <th></th>
+        <!--<th></th>-->
         <th>Nome</th>
         <th>Sexo</th>
         <th>Data</th>
@@ -53,7 +64,7 @@
       foreach ($arrayAgendamentosMedico as $agendamentoMedico) {
         echo <<<HTML
           <tr>
-            <td><a href="controlador.php?acao=excluirAgendamentoMedico&Data=$agendamentoMedico->data">Excluir</a></td> 
+            <!--<td></td>-->
             <td>$agendamentoMedico->nome</td> 
             <td>$agendamentoMedico->sexo</td>
             <td>$agendamentoMedico->data</td>

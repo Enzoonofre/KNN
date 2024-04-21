@@ -92,7 +92,8 @@ $especialidades = $stmt2->fetchAll();
                         <option value="" selected>Selecione</option>
                         <?php foreach ($medicos as $medico): ?>
                             <option value="<?= htmlspecialchars($medico['Nome'], ENT_QUOTES, 'UTF-8'); ?>">
-                                <?= htmlspecialchars($medico['Nome'], ENT_QUOTES, 'UTF-8'); ?></option>
+                                <?= htmlspecialchars($medico['Nome'], ENT_QUOTES, 'UTF-8'); ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -105,7 +106,7 @@ $especialidades = $stmt2->fetchAll();
                     <label for="horario">Horário:</label>
                     <select name="horario" id="horario">
                         <option value="" selected>Selecione</option>
-                        <option value="08:00:00">8:00</option>
+                        <!--<option value="08:00:00">8:00</option>
                         <option value="09:00:00">9:00</option>
                         <option value="10:00:00">10:00</option>
                         <option value="11:00:00">11:00</option>
@@ -114,7 +115,7 @@ $especialidades = $stmt2->fetchAll();
                         <option value="14:00:00">14:00</option>
                         <option value="15:00:00">15:00</option>
                         <option value="16:00:00">16:00</option>
-                        <option value="17:00:00">17:00</option>
+                        <option value="17:00:00">17:00</option>-->
                     </select>
                 </div>
             </fieldset>
@@ -129,7 +130,29 @@ $especialidades = $stmt2->fetchAll();
         <address>Avenida João Naves de Ávila 2121, Santa Mônica, Uberlândia</address>
     </footer>
 
-    <script src="validacao.js"></script>
+    <script>
+        document.getElementById('nomeMed').addEventListener('change', function () {
+            var medico = this.value;
+            var data = document.getElementById('data').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'horarios-disponiveis.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    var horarios = JSON.parse(this.responseText);
+                    var select = document.getElementById('horario');
+                    select.innerHTML = '';
+                    for (var i = 0; i < horarios.length; i++) {
+                        var opt = document.createElement('option');
+                        opt.value = horarios[i];
+                        opt.innerHTML = horarios[i];
+                        select.appendChild(opt);
+                    }
+                }
+            };
+            xhr.send('data=' + data + '&medico=' + medico);
+        });
+    </script>
 </body>
 
 

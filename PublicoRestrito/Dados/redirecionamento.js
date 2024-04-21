@@ -7,12 +7,3 @@ document.getElementById("btn").addEventListener("click", function() {
         alert("Por favor, selecione uma opção antes de prosseguir.");
     }
 });
-
-document.getElementById("boxMed").addEventListener("change", function() {
-    var medicoOption = document.getElementById("campoMed");
-    if (this.checked) {
-        medicoOption.style.display = "block";
-    } else {
-        medicoOption.style.display = "none";
-    }
-});

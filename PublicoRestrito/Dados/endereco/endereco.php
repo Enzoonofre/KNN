@@ -17,7 +17,7 @@ class Endereco
 
   // Adiciona os dados do objeto (endereco)
   // na tabela endereco do banco de dados
-  public function AddToDatabase($pdo)
+  /*public function AddToDatabase($pdo)
   {
     try {
       $sql = <<<SQL
@@ -34,7 +34,7 @@ class Endereco
     } catch (Exception $e) {
       exit('Falha inesperada: ' . $e->getMessage());
     }
-  }
+  }*/
 
   // Método estático para retornar, na forma de um
   // array de objetos, os 30 enderecos iniciais da tabela.
@@ -43,13 +43,12 @@ class Endereco
   // estão associados à classe em si, e não a uma instância.
   // No PHP devem ser chamados com a sintaxe:
   // NomeDaClasse::NomeDoMétodo
-  public static function GetFirst30($pdo)
+  public static function GetData($pdo)
   {
     try {
       $sql = <<<SQL
       SELECT cep, logradouro, cidade, estado
       FROM Endereco
-      LIMIT 30
       SQL;
 
       // Neste exemplo não é necessário utilizar prepared statements
@@ -85,11 +84,11 @@ class Endereco
 
   // Método estático para excluir um cliente
   // dado o seu CPF
-  public static function RemoveByCEP($pdo, $cep)
+ /* public static function RemoveByCEP($pdo, $cep)
   {
     try {
       $sql = <<<SQL
-      DELETE FROM Endereco /*verificar nome no BD da tabela endereco se é igual*/
+      DELETE FROM Endereco /*verificar nome no BD da tabela endereco se é igual
       WHERE cep = ?
       LIMIT 1
       SQL;
@@ -101,5 +100,5 @@ class Endereco
     } catch (Exception $e) {
       exit('Falha inesperada: ' . $e->getMessage());
     }
-  }
+  }*/
 }
