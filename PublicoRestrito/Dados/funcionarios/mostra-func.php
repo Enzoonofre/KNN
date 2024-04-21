@@ -35,6 +35,8 @@
         <th>Data de Início</th>
         <th>Salário</th>
         <th>Cargo</th>
+        <th>Especialidade</th>
+        <th>CRM</th>
       </tr>
 
       <?php
@@ -52,6 +54,8 @@
             <td>$funcionario->data_inicio</td>
             <td>$funcionario->salario</td>
             <td>$funcionario->cargo</td>
+            <td>$funcionario->especialidade</td>
+            <td>$funcionario->crm</td>
           </tr>      
         HTML;
       }

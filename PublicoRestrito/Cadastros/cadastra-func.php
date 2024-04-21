@@ -3,33 +3,50 @@
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
-// Resgata os dados do Funcionario
+// Resgata os dados de Pessoa
 $nome = $_POST["nome"] ?? "";
 $sexo = $_POST["sexo"] ?? "";
 $email = $_POST["email"] ?? "";
 $telefone = $_POST["telefone"] ?? "";
 $cep = $_POST["cep"] ?? "";
-$logradouro = $_POST["log"] ?? "";
+$logradouro = $_POST["logradouro"] ?? "";
 $cidade = $_POST["cidade"] ?? "";
 $estado = $_POST["estado"] ?? "";
-$data_inicio = $_POST["data_inicio"] ?? "";
+
+// Resgata os dados de Funcionário
+$data_inicio = $_POST["DataContrato"] ?? "";
 $salario = $_POST["salario"] ?? "";
 $senha = $_POST["senha"] ?? "";
 $cargo = $_POST["cargo"] ?? "";
 
+// Resgata os dados de Médico
+$especialidade = $_POST["especialidade"] ?? "";
+$crm = $_POST["crm"] ?? "";
 
 $sql1 = <<<SQL
-  INSERT INTO Funcionario (nome, sexo, email, telefone, cep, logradouro, cidade, estado, data_inicio, salario, senha, cargo)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  INSERT INTO Pessoa (nome, sexo, email, 
+                       telefone, cep, logradouro, cidade, estado)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  SQL;
+
+$sql2 = <<<SQL
+  INSERT INTO Funcionario (data_inicio, salario, senha, cargo, Codigo)
+  VALUES (?, ?, ?, ?, ?)
   SQL;
 
 try {
   $pdo->beginTransaction();
 
-  $stmt = $pdo->prepare($sql);
-  if (!$stmt->execute([$nome, $sexo, $email, $telefone, $data_inicio, $salario, $senha, $cargo])) {
-    throw new Exception('Falha na inserção do Funcionario');
+  $stmt1 = $pdo->prepare($sql);
+  if (!$stmt1->execute([$nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $estado])) {
+    throw new Exception('Falha na primeira inserção');
   }
+
+  $codNovoFunc = $pdo->lastInsertId();
+  $stmt2 = $pdo->prepare($sql2);
+  if (!$stmt2->execute([
+    $data_inicio, $salario, $senha, $cargo, $codNovoFunc
+  ])) throw new Exception('Falha na segunda inserção');
 
   // Efetiva as operações
   $pdo->commit();

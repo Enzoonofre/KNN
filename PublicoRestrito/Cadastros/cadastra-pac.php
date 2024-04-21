@@ -26,7 +26,7 @@ $sql1 = <<<SQL
 
 $sql2 = <<<SQL
   INSERT INTO Paciente 
-    (peso, altura, tipo_sanguineo, codigo_pessoa)
+    (peso, altura, tipo_sanguineo, Codigo)
   VALUES (?, ?, ?, ?)
   SQL;
 
