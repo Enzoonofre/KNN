@@ -6,3 +6,5 @@ document.getElementById('cargo').onchange = function () {
         medicoCampos.style.display = 'none';
     }
 };
+
+
