@@ -41,7 +41,6 @@
             <?php foreach ($arrayPacientes as $paciente) {
                 echo <<<HTML
                 <tr>
-                    <td><a href="controlador.php?acao=excluirPaciente&idPaciente=<?= $paciente->id ?>">Excluir</a></td>
                     <td>$paciente->nome</td>
                     <td>$paciente->sexo</td>
                     <td>$paciente->email</td>

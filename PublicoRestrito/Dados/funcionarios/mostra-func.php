@@ -41,7 +41,6 @@
       foreach ($arrayFuncionarios as $funcionario) {
         echo <<<HTML
           <tr>
-            <td><a href="controlador.php?acao=excluirFuncionario&idFuncionario=$funcionario->idFuncionario">Excluir</a></td> 
             <td>$funcionario->nome</td> 
             <td>$funcionario->sexo</td>
             <td>$funcionario->email</td>

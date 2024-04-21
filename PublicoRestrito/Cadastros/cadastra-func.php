@@ -17,6 +17,7 @@ $salario = $_POST["salario"] ?? "";
 $senha = $_POST["senha"] ?? "";
 $cargo = $_POST["cargo"] ?? "";
 
+
 $sql1 = <<<SQL
   INSERT INTO Funcionario (nome, sexo, email, telefone, cep, logradouro, cidade, estado, data_inicio, salario, senha, cargo)
   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)

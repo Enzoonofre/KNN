@@ -3,40 +3,57 @@
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
-// Resgata os dados do Paciente
+// Resgata os dados de Pessoa
 $nome = $_POST["nome"] ?? "";
 $sexo = $_POST["sexo"] ?? "";
 $email = $_POST["email"] ?? "";
 $telefone = $_POST["telefone"] ?? "";
 $cep = $_POST["cep"] ?? "";
-$logradouro = $_POST["log"] ?? "";
+$logradouro = $_POST["logradouro"] ?? "";
 $cidade = $_POST["cidade"] ?? "";
 $estado = $_POST["estado"] ?? "";
+
+// Resgata os dados de Paciente
 $peso = $_POST["peso"] ?? "";
 $altura = $_POST["altura"] ?? "";
 $tipo_sanguineo = $_POST["tipo_sanguineo"] ?? "";
 
-$sql = <<<SQL
-  INSERT INTO Paciente (nome, sexo, email, telefone, cep, logradouro, cidade, estado, peso, altura, tipo_sanguineo)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+$sql1 = <<<SQL
+  INSERT INTO Pessoa (nome, sexo, email, 
+                       telefone, cep, logradouro, cidade, estado)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  SQL;
+
+$sql2 = <<<SQL
+  INSERT INTO Paciente 
+    (peso, altura, tipo_sanguineo, codigo_pessoa)
+  VALUES (?, ?, ?, ?)
   SQL;
 
 try {
   $pdo->beginTransaction();
 
-  $stmt = $pdo->prepare($sql);
-  if (!$stmt->execute([$nome, $sexo, $email, $telefone, $peso, $altura, $tipo_sanguineo])) {
-    throw new Exception('Falha na inserção do Paciente');
-  }
+  $stmt1 = $pdo->prepare($sql1);
+  if (!$stmt1->execute([
+    $nome, $sexo, $email, $telefone, $cep,
+    $logradouro, $cidade, $estado
+  ])) throw new Exception('Falha na primeira inserção');
+
+  $codNovoPaciente = $pdo->lastInsertId();
+  $stmt2 = $pdo->prepare($sql2);
+  if (!$stmt2->execute([
+    $peso, $altura, $tipo_sanguineo, $codNovoPaciente
+  ])) throw new Exception('Falha na segunda inserção');
 
   // Efetiva as operações
   $pdo->commit();
 
   header("location: cadastroPaciente.html");
   exit();
-} catch (Exception $e) {
+} 
+catch (Exception $e) {
   $pdo->rollBack();
-  if ($stmt->errorInfo()[1] === 1062) {
+  if ($stmt1->errorInfo()[1] === 1062) {
     exit('Dados duplicados: ' . $e->getMessage());
   } else {
     exit('Falha ao cadastrar os dados do Paciente: ' . $e->getMessage());
