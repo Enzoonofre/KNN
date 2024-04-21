@@ -92,7 +92,8 @@ $especialidades = $stmt2->fetchAll();
                         <option value="" selected>Selecione</option>
                         <?php foreach ($medicos as $medico): ?>
                             <option value="<?= htmlspecialchars($medico['Nome'], ENT_QUOTES, 'UTF-8'); ?>">
-                                <?= htmlspecialchars($medico['Nome'], ENT_QUOTES, 'UTF-8'); ?></option>
+                                <?= htmlspecialchars($medico['Nome'], ENT_QUOTES, 'UTF-8'); ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -129,7 +130,74 @@ $especialidades = $stmt2->fetchAll();
         <address>Avenida João Naves de Ávila 2121, Santa Mônica, Uberlândia</address>
     </footer>
 
-    <script src="validacao.js"></script>
+    <script>
+        async function carregarHorarios() {
+            try {
+                const selectEspecialidade = document.querySelector("#especialidade");
+                const selectMedico = document.querySelector("#nomeMed");
+                const data = document.querySelector("#data");
+                const response = await fetch(`horarios-disponiveis.php?especialidade=${selectEspecialidade.value}&nomeMed=${selectMedico.value}&data=${data.value}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const horariosIndisponiveis = await response.json();
+
+                const selectHorario = document.querySelector("#horario");
+                selectHorario.innerHTML = '';
+                for (let horario of horarios) {
+                    if (!horariosIndisponiveis.some(horarioIndisponivel => horarioIndisponivel.Horario === horario.value)) {
+                        selectHorario.appendChild(horario.cloneNode(true));
+                    }
+                }
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+        async function carregarMedicos() {
+            try {
+                const selectEspecialidade = document.querySelector("#especialidade");
+                const response = await fetch(`medicos-por-especialidade.php?especialidade=${selectEspecialidade.value}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const medicosDisponiveis = await response.json();
+
+                const selectMedico = document.querySelector("#nomeMed");
+
+                // Remove all options that are not the "Selecione" option
+                for (let i = selectMedico.options.length - 1; i >= 0; i--) {
+                    if (selectMedico.options[i].value !== '') {
+                        selectMedico.remove(i);
+                    }
+                }
+
+                for (let medico of medicos) {
+                    if (medicosDisponiveis.some(medicoDisponivel => medicoDisponivel.Nome === medico.value)) {
+                        selectMedico.appendChild(medico.cloneNode(true));
+                    }
+                }
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+        window.onload = function () {
+            const selectHorario = document.querySelector("#horario");
+            horarios = Array.from(selectHorario.options);
+
+            const selectMedico = document.querySelector("#nomeMed");
+            medicos = Array.from(selectMedico.options);
+
+            const selectEspecialidade = document.querySelector("#especialidade");
+            const inputMedico = document.getElementById('nomeMed');
+            const inputData = document.getElementById('data');
+
+            inputMedico.onchange = () => carregarHorarios();
+            inputData.onchange = () => carregarHorarios();
+            selectEspecialidade.onchange = () => carregarMedicos();
+        };
+    </script>
 </body>
 
 

@@ -1,11 +1,11 @@
 <?php
 
-class Agendamento
+class AgendamentoMedico
 {
   public $nome;
-  public $sexo;
+  public $sexo;//falata mexer em tudo neste arquivo
   public $data;
-  public $hora;
+  public $hora; // falta arrumar esquema de mostrar apenas horarios disponiveis
   public $codigoMed;
 
   function __construct($nome, $sexo, $data, $hora, $codigoMed)
@@ -19,7 +19,7 @@ class Agendamento
 
   // Adiciona os dados do objeto (endereco)
   // na tabela endereco do banco de dados
- /* public function AddToDatabase($pdo)
+  /*public function AddToDatabase($pdo)
   {
     try {
       $sql = <<<SQL
@@ -45,20 +45,25 @@ class Agendamento
   // estão associados à classe em si, e não a uma instância.
   // No PHP devem ser chamados com a sintaxe:
   // NomeDaClasse::NomeDoMétodo
-  public static function GetData($pdo)
+  public static function GetData($pdo, $email)
   {
     try {
       $sql = <<<SQL
-      SELECT Nome, Sexo, Data, Horario, CodigoMedico
-      FROM Agenda
+      SELECT a.*
+      FROM Agenda a
+      JOIN Medico m ON a.CodigoMedico = m.Codigo
+      JOIN Funcionario f ON m.Codigo = f.Codigo
+      JOIN Pessoa p ON f.Codigo = p.Codigo
+      WHERE p.Email = ?
       SQL;
 
       // Neste exemplo não é necessário utilizar prepared statements
       // porque não há a possibilidade de inj. de S-Q-L, 
       // pois nenhum parâmetro do usuário é utilizado na query SQL. 
-      $stmt = $pdo->query($sql);
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([$email]);
 
-      $arrayAgendamentos = [];
+      $arrayAgendamentosMedico = [];
       while ($row = $stmt->fetch()) {
         // Sanitiza os dados produzidos pelo usuário
         // que oferecem risco de X S S
@@ -67,20 +72,20 @@ class Agendamento
         $data = htmlspecialchars($row['Data']);
         $hora = htmlspecialchars($row['Horario']);
         $codigoMed = htmlspecialchars($row['CodigoMedico']);
-  
+
 
         // Cria um novo objeto do tipo Cliente e adiciona
         // no final do array de clientes
-        $novoAgendamento = new Agendamento(
+        $novoAgendamentoMedico = new AgendamentoMedico(
           $nome,
           $sexo,
           $data,
           $hora,
           $codigoMed
         );
-        $arrayAgendamentos[] = $novoAgendamento;
+        $arrayAgendamentosMedico[] = $novoAgendamentoMedico;
       }
-      return $arrayAgendamentos;
+      return $arrayAgendamentosMedico;
     } catch (Exception $e) {
       exit('Falha inesperada: ' . $e->getMessage());
     }

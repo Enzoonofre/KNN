@@ -1,9 +1,12 @@
 <?php
-  require "endereco.php";
+  require "agendamentoMedico.php";
   require "conexaoMysql.php";
   $pdo = mysqlConnect();
 
-  $arrayEnderecos = Endereco::GetData($pdo);
+  session_start();
+  $email = $_SESSION['user'];
+
+  $arrayAgendamentosMedico = AgendamentoMedico::GetData($pdo, $email);
 ?>
 
 <!doctype html>
@@ -13,12 +16,11 @@
   <meta charset="utf-8">
   <!-- 1: Tag de responsividade -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Endereços cadastrados</title>
+  <title>Agenda</title>
 
   <!-- 2: Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
   <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -47,25 +49,27 @@
   </nav>
 
   <div class="container">
-    <h3>Endereços Cadastrados</h3>
+    <h3>Agendamentos</h3>
     <table class="table table-striped table-hover">
       <tr>
         <!--<th></th>-->
-        <th>CEP</th>
-        <th>Logradouro</th>
-        <th>Cidade</th>
-        <th>Estado</th>
+        <th>Nome</th>
+        <th>Sexo</th>
+        <th>Data</th>
+        <th>Horario</th>
+        <th>Codigo Medico (talvez mudar para nome medico dps)</th>
       </tr>
 
       <?php
-      foreach ($arrayEnderecos as $endereco) {
+      foreach ($arrayAgendamentosMedico as $agendamentoMedico) {
         echo <<<HTML
           <tr>
             <!--<td></td>-->
-            <td>$endereco->cep</td> 
-            <td>$endereco->logradouro</td>
-            <td>$endereco->cidade</td>
-            <td>$endereco->estado</td>
+            <td>$agendamentoMedico->nome</td> 
+            <td>$agendamentoMedico->sexo</td>
+            <td>$agendamentoMedico->data</td>
+            <td>$agendamentoMedico->hora</td>
+            <td>$agendamentoMedico->codigoMed</td>
           </tr>      
         HTML;
       }
