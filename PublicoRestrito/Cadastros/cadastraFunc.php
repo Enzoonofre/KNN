@@ -59,13 +59,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   try{
     // Insere dados na tabela Pessoa
   $sql = <<<SQL
-  INSERT INTO Pessoa (Nome, Sexo, Email, Telefone, CEP, Logradouro, Cidade, Estado)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  INSERT INTO Pessoa (Nome, Sexo, Email, Telefone)
+  VALUES (?, ?, ?, ?)
   SQL;
 
 $stmt = $pdo->prepare($sql);
-$stmt->execute([$nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $estado]);
+$stmt->execute([$nome, $sexo, $email, $telefone]);
 $codigo_pessoa = $pdo->lastInsertId();
+
+  // Insere dados na tabela Pessoa
+$sql = <<<SQL
+INSERT INTO Endereco (codigo_pessoa, CEP, Logradouro, Cidade, Estado)
+VALUES (?, ?, ?, ?, ?)
+SQL;
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$codigo_pessoa, $cep, $logradouro, $cidade,$estado]);
+
 
 // Insere dados na tabela Funcionario
 $sql = <<<SQL
