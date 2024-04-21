@@ -34,18 +34,8 @@ $pdo = mysqlConnect();
       <tr>
         <th></th>
         <th>Nome</th>
-        <th>Sexo</th>
-        <th>Email</th>
-        <th>Telefone</th>
-        <th>CEP</th>
-        <th>Logradouro</th>
-        <th>Cidade</th>
-        <th>Estado</th>
         <th>Data de Início</th>
         <th>Salário</th>
-        <th>Cargo</th>
-        <th>Especialidade</th>
-        <th>CRM</th>
       </tr>
 
       <?php
