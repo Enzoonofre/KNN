@@ -57,7 +57,7 @@
         <th>Sexo</th>
         <th>Data</th>
         <th>Horario</th>
-        <th>Codigo Medico (talvez mudar para nome medico dps)</th>
+        <th>Codigo Medico</th>
       </tr>
 
       <?php
