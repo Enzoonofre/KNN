@@ -1,3 +1,11 @@
+<?php
+  require "endereco.php";
+  require "conexaoMysql.php";
+  $pdo = mysqlConnect();
+
+  $arrayEnderecos = Endereco::GetData($pdo);
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -24,7 +32,7 @@
   <nav>
     <div class="conteiner">
       <div class="item">
-        <a href="../../HomeRestrito.html">Home</a>
+        <a href="../../homeRestrito.php">Home</a>
       </div>
       <div class="item">
         <a href="../../Cadastros/cadastroFunc.html">Cadastro de Funcionarios</a>
@@ -33,7 +41,7 @@
         <a href="../../Cadastros/cadastroPaciente.html">Cadastro de Pacientes</a>
       </div>
       <div class="item">
-        <a href="../dados.html">Listagem de Dados</a>
+        <a href="../dados.php">Listagem de Dados</a>
       </div>
     </div>
   </nav>
@@ -42,7 +50,7 @@
     <h3>Endereços Cadastrados</h3>
     <table class="table table-striped table-hover">
       <tr>
-        <th></th>
+        <!--<th></th>-->
         <th>CEP</th>
         <th>Logradouro</th>
         <th>Cidade</th>
@@ -53,7 +61,7 @@
       foreach ($arrayEnderecos as $endereco) {
         echo <<<HTML
           <tr>
-            <td><a href="controlador.php?acao=excluirEndereco&cep=$endereco->cep">Excluir</a></td> 
+            <!--<td></td>-->
             <td>$endereco->cep</td> 
             <td>$endereco->logradouro</td>
             <td>$endereco->cidade</td>
@@ -64,7 +72,7 @@
       ?>
 
     </table>
-    <p><a href="../dados.html">Voltar para os dados</a></p>
+    <p><a href="../dados.php">Voltar para os dados</a></p>
   </div>
 
 </body>

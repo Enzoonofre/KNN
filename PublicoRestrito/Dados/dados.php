@@ -41,21 +41,17 @@ o caminho diretamente no navegador (Testar isso para todas as pag do acesso Rest
 
     <main>
         <div class="conteiner2">
-            <div class="ckbox">
-                <input type="checkbox" name="med" id="boxMed">
-                <label for="boxMed">Sou médico</label>
-            </div>
-
             <label for="selecione">Selecione a opção desejada:</label>
             <select name="opc" id="selecione">
                 <option value="" selected>Selecione</option>
                 <option value="funcionariosCad.html">Funcionarios Cadastrados</option>
                 <option value="pacientesCadastrados.html">Pacientes Cadastrados</option>
-                <option value="endereco/controlador.php?acao=listarEnderecos">Endereços Auxiliares</option>
-                <option value="agendamentos/controlador.php?acao=listarAgendamentos">Agendamentos realizados por
+                <!--<option value="endereco/controlador.php?acao=listarEnderecos">Endereços Auxiliares</option>-->
+                <option value="endereco/mostra-enderecos.php">Endereços Auxiliares</option>
+                <option value="agendamentos/mostra-agendamentos.php">Agendamentos realizados por
                     clientes</option>
                 <?php if (isset($_SESSION['is_doctor'])): ?>
-                    <option value="meusAgendamentos/controlador.php?acao=listarAgendamentosMedico" id="campoMed">Meus Agendamentos</option>
+                    <option value="meusAgendamentos/mostra-agendamentos.php" id="campoMed">Meus Agendamentos</option>
                 <?php endif; ?>
             </select>
 

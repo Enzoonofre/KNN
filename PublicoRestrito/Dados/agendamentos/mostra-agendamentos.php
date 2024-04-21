@@ -1,3 +1,11 @@
+<?php
+  require "agendamento.php";
+  require "conexaoMysql.php";
+  $pdo = mysqlConnect();
+
+  $arrayAgendamentos = Agendamento::GetData($pdo);
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -23,7 +31,7 @@
   <nav>
     <div class="conteiner">
       <div class="item">
-        <a href="../../HomeRestrito.html">Home</a>
+        <a href="../../homeRestrito.php">Home</a>
       </div>
       <div class="item">
         <a href="../../Cadastros/cadastroFunc.html">Cadastro de Funcionarios</a>
@@ -32,7 +40,7 @@
         <a href="../../Cadastros/cadastroPaciente.html">Cadastro de Pacientes</a>
       </div>
       <div class="item">
-        <a href="../dados.html">Listagem de Dados</a>
+        <a href="../dados.php">Listagem de Dados</a>
       </div>
     </div>
   </nav>
@@ -41,7 +49,7 @@
     <h3>Agendamentos</h3>
     <table class="table table-striped table-hover">
       <tr>
-        <th></th>
+        <!--<th></th>-->
         <th>Nome</th>
         <th>Sexo</th>
         <th>Data</th>
@@ -53,7 +61,7 @@
       foreach ($arrayAgendamentos as $agendamento) {
         echo <<<HTML
           <tr>
-            <td><a href="controlador.php?acao=excluirAgendamento&Data=$agendamento->data">Excluir</a></td> 
+            <!--<td></td>-->
             <td>$agendamento->nome</td> 
             <td>$agendamento->sexo</td>
             <td>$agendamento->data</td>
@@ -65,7 +73,7 @@
       ?>
 
     </table>
-    <p><a href="../dados.html">Voltar para os dados</a></p>
+    <p><a href="../dados.php">Voltar para os dados</a></p>
   </div>
 
 </body>

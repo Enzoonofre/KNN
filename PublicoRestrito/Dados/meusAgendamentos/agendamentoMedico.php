@@ -19,7 +19,7 @@ class AgendamentoMedico
 
   // Adiciona os dados do objeto (endereco)
   // na tabela endereco do banco de dados
-  public function AddToDatabase($pdo)
+  /*public function AddToDatabase($pdo)
   {
     try {
       $sql = <<<SQL
@@ -36,7 +36,7 @@ class AgendamentoMedico
     } catch (Exception $e) {
       exit('Falha inesperada: ' . $e->getMessage());
     }
-  }
+  }*/
 
   // Método estático para retornar, na forma de um
   // array de objetos, os 30 enderecos iniciais da tabela.
@@ -45,7 +45,7 @@ class AgendamentoMedico
   // estão associados à classe em si, e não a uma instância.
   // No PHP devem ser chamados com a sintaxe:
   // NomeDaClasse::NomeDoMétodo
-  public static function GetFirst30($pdo, $email)
+  public static function GetData($pdo, $email)
   {
     try {
       $sql = <<<SQL
@@ -55,7 +55,6 @@ class AgendamentoMedico
       JOIN Funcionario f ON m.Codigo = f.Codigo
       JOIN Pessoa p ON f.Codigo = p.Codigo
       WHERE p.Email = ?
-      LIMIT 30
       SQL;
 
       // Neste exemplo não é necessário utilizar prepared statements
@@ -94,11 +93,11 @@ class AgendamentoMedico
 
   // Método estático para excluir um cliente
   // dado o seu CPF
-  public static function RemoveByData($pdo, $data)
+  /*public static function RemoveByData($pdo, $data)
   {
     try {
       $sql = <<<SQL
-      DELETE FROM Agenda /*verificar nome no BD da tabela endereco se é igual*/
+      DELETE FROM Agenda /*verificar nome no BD da tabela endereco se é igual
       WHERE Data = ?
       LIMIT 1
       SQL;
@@ -110,5 +109,5 @@ class AgendamentoMedico
     } catch (Exception $e) {
       exit('Falha inesperada: ' . $e->getMessage());
     }
-  }
+  }*/
 }
