@@ -44,8 +44,8 @@ o caminho diretamente no navegador (Testar isso para todas as pag do acesso Rest
             <label for="selecione">Selecione a opção desejada:</label>
             <select name="opc" id="selecione">
                 <option value="" selected>Selecione</option>
-                <option value="funcionariosCad.html">Funcionarios Cadastrados</option>
-                <option value="pacientesCadastrados.html">Pacientes Cadastrados</option>
+                <option value="funcionarios/mostra-func.php">Funcionarios Cadastrados</option>
+                <option value="pacientes/mostra-pac.php">Pacientes Cadastrados</option>
                 <!--<option value="endereco/controlador.php?acao=listarEnderecos">Endereços Auxiliares</option>-->
                 <option value="endereco/mostra-enderecos.php">Endereços Auxiliares</option>
                 <option value="agendamentos/mostra-agendamentos.php">Agendamentos realizados por
