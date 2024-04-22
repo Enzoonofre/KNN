@@ -31,10 +31,6 @@ if ($user) {
 </head>
 
 <body>
-  <!--<script>
-    alert(document.cookie);
-  </script>-->
-
   <header>
     <div>
       <img src="imagens/logo2.jpg" alt="Logo Clínica" id="logo">

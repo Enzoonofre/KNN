@@ -33,9 +33,6 @@ o caminho diretamente no navegador (Testar isso para todas as pag do acesso Rest
             <div class="item">
                 <a href="../Cadastros/cadastroPaciente.html">Cadastro de Pacientes</a>
             </div>
-            <!--<div class="item">
-                <a href="dados.html">Listagem de Dados</a>
-            </div>-->
         </div>
     </nav>
 
@@ -46,7 +43,6 @@ o caminho diretamente no navegador (Testar isso para todas as pag do acesso Rest
                 <option value="" selected>Selecione</option>
                 <option value="funcionarios/mostra-func.php">Funcionarios Cadastrados</option>
                 <option value="pacientes/mostra-pac.php">Pacientes Cadastrados</option>
-                <!--<option value="endereco/controlador.php?acao=listarEnderecos">Endereços Auxiliares</option>-->
                 <option value="endereco/mostra-enderecos.php">Endereços Auxiliares</option>
                 <option value="agendamentos/mostra-agendamentos.php">Agendamentos realizados por
                     clientes</option>
