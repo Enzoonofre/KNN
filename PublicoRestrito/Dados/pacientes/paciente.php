@@ -32,10 +32,10 @@ class Paciente
       while ($row = $stmt->fetch()) {
         // Sanitiza os dados produzidos pelo usuário
         // que oferecem risco de X S S
-        $nome = htmlspecialchars($row['nome']);
-        $peso = htmlspecialchars($row['peso']);
-        $altura = htmlspecialchars($row['altura']);
-        $tipoSanguineo = htmlspecialchars($row['tipo_sanguineo']);
+        $nome = htmlspecialchars($row['Nome']);
+        $peso = htmlspecialchars($row['Peso']);
+        $altura = htmlspecialchars($row['Altura']);
+        $tipoSanguineo = htmlspecialchars($row['TipoSanguineo']);
   
 
         // Cria um novo objeto do tipo Cliente e adiciona

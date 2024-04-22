@@ -2,10 +2,10 @@
 
 function mysqlConnect()
 {
-  $db_host = "sql109.infinityfree.com";
-  $db_username = "if0_35771761";
-  $db_password = "rQpubmCDA2f";
-  $db_name = "if0_35771761_trab_ppi";
+  $db_host = "sql213.infinityfree.com";
+  $db_username = "if0_36331575";
+  $db_password = "9W7CGtUaQc";
+  $db_name = "if0_36331575_ppi";
 
   /*
   Criei um outro BD pq n sabia como mudar o antigo kk. Mas não mudei nada demais não, só
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $logradouro = $_POST['logradouro'];
   $cidade = $_POST['cidade'];
   $estado = $_POST['estado'];
-  $data_inicio = $_POST['data_inicio'];
+  $data_inicio = $_POST['DataContrato'];
   $salario = $_POST['salario'];
   $senha = $_POST['senha'];
   $cargo = $_POST['cargo'];
@@ -62,21 +62,21 @@ try {
   VALUES (?, ?, ?, ?)
   SQL;
 
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$nome, $sexo, $email, $telefone]);
-$codigo_pessoa = $pdo->lastInsertId();
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$nome, $sexo, $email, $telefone]);
+  $codigo_pessoa = $pdo->lastInsertId();
 
-$sql = <<<SQL
-INSERT INTO Endereco (codigo_pessoa, CEP, Logradouro, Cidade, Estado)
+  $sql = <<<SQL
+INSERT INTO Endereco (Codigo, CEP, Logradouro, Cidade, Estado)
 VALUES (?, ?, ?, ?, ?)
 SQL;
 
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$codigo_pessoa, $cep, $logradouro, $cidade,$estado]);
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$codigo_pessoa, $cep, $logradouro, $cidade, $estado]);
 
 
-// Insere dados na tabela Funcionario
-$sql = <<<SQL
+  // Insere dados na tabela Funcionario
+  $sql = <<<SQL
       INSERT INTO Funcionario (Codigo, DataContrato, Salario, SenhaHash)
       VALUES (?, ?, ?, ?)
   SQL;
@@ -99,7 +99,7 @@ $sql = <<<SQL
   // Confirma a transação
   $pdo->commit();
   echo "Cadastro realizado com sucesso!";
-  header("location: cadastroFunc.html");
+  header("location: cadastroFuncionario.php");
   exit();
 } catch (PDOException $e) {
   // Caso ocorra algum erro, reverte a transação e exibe uma mensagem de erro

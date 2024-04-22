@@ -1,6 +1,6 @@
 <?php
 
-require "../conexaoMysql.php";
+require "../Dados/funcionarios/conexaoMysql.php";
 $pdo = mysqlConnect();
 
 // Resgata os dados de Pessoa
@@ -16,47 +16,46 @@ $estado = $_POST["estado"] ?? "";
 // Resgata os dados de Paciente
 $peso = $_POST["peso"] ?? "";
 $altura = $_POST["altura"] ?? "";
-$tipo_sanguineo = $_POST["tipo_sanguineo"] ?? "";
-
-$sql1 = <<<SQL
-  INSERT INTO Pessoa (nome, sexo, email, 
-                       telefone, cep, logradouro, cidade, estado)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  SQL;
-
-$sql2 = <<<SQL
-  INSERT INTO Paciente 
-    (peso, altura, tipo_sanguineo, Codigo)
-  VALUES (?, ?, ?, ?)
-  SQL;
+$tipoSanguineo = $_POST["tipo_sanguineo"] ?? "";
 
 try {
   $pdo->beginTransaction();
+  // Insere dados na tabela Pessoa
+  $sql = <<<SQL
+  INSERT INTO Pessoa (Nome, Sexo, Email, Telefone)
+  VALUES (?, ?, ?, ?)
+  SQL;
 
-  $stmt1 = $pdo->prepare($sql1);
-  if (!$stmt1->execute([
-    $nome, $sexo, $email, $telefone, $cep,
-    $logradouro, $cidade, $estado
-  ])) throw new Exception('Falha na primeira inserção');
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$nome, $sexo, $email, $telefone]);
+  $codigo_pessoa = $pdo->lastInsertId();
 
-  $codNovoPaciente = $pdo->lastInsertId();
-  $stmt2 = $pdo->prepare($sql2);
-  if (!$stmt2->execute([
-    $peso, $altura, $tipo_sanguineo, $codNovoPaciente
-  ])) throw new Exception('Falha na segunda inserção');
+  $sql = <<<SQL
+INSERT INTO Endereco (Codigo, CEP, Logradouro, Cidade, Estado)
+VALUES (?, ?, ?, ?, ?)
+SQL;
+
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$codigo_pessoa, $cep, $logradouro, $cidade, $estado]);
+
+
+  // Insere dados na tabela Funcionario
+  $sql = <<<SQL
+      INSERT INTO Paciente (Codigo, Peso, Altura, TipoSanguineo)
+      VALUES (?, ?, ?, ?)
+  SQL;
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$codigo_pessoa, $peso, $altura, $tipoSanguineo]);
 
   // Efetiva as operações
   $pdo->commit();
 
-  header("location: cadastroPaciente.html");
+  header("location: cadastroPaciente.php");
   exit();
-} 
-catch (Exception $e) {
+} catch (Exception $e) {
   $pdo->rollBack();
-  if ($stmt1->errorInfo()[1] === 1062) {
-    exit('Dados duplicados: ' . $e->getMessage());
-  } else {
-    exit('Falha ao cadastrar os dados do Paciente: ' . $e->getMessage());
-  }
+
+  exit('Falha ao cadastrar os dados do Paciente: ' . $e->getMessage());
+
 }
 ?>

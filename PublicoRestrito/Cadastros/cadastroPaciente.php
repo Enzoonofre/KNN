@@ -145,7 +145,7 @@ session_start();
                     </div>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary" id="botao">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary" id="botao">Cadastrar</button>
                 </div>
             </fieldset>
         </form>
@@ -154,6 +154,49 @@ session_start();
     <footer class="foot">
         <address>Avenida João Naves de Ávila 2121, Santa Mônica, Uberlândia</address>
     </footer>
+
+    <script>
+        function buscaCidade(cep) {
+
+            if (cep.length != 9) return;
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "baseEndereco.php?cep=" + cep);
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var responseData = JSON.parse(xhr.responseText);
+
+                    // Definindo os valores dos elementos com base na resposta do servidor
+                    document.querySelector("#logradouro").value = responseData.logradouro_base;
+                    document.querySelector("#cidade").value = responseData.cidade_base;
+
+                    var estadoSelect = document.getElementById("estado");
+
+                    // Iterando sobre as opções para encontrar a correspondente ao valor desejado
+                    for (var i = 0; i < estadoSelect.options.length; i++) {
+                        if (estadoSelect.options[i].value === responseData.estado_base) {
+                            // Definindo a opção como selecionada
+                            estadoSelect.options[i].selected = true;
+                            break; // Saindo do loop, pois já encontramos e selecionamos a opção desejada
+                        }
+                    }
+                } else {
+                    console.error('Erro ao carregar dados do servidor.');
+                }
+            };
+            xhr.onerror = function () {
+                console.log("Erro de rede");
+            };
+
+            xhr.send();
+        }
+
+        window.onload = function () {
+            const inputCep = document.querySelector("#cep");
+            inputCep.onkeyup = () => buscaCidade(inputCep.value);
+        }
+    </script>
 
 </body>
 

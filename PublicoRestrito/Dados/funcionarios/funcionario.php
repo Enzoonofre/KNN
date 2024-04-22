@@ -18,7 +18,6 @@ class Funcionario
       $sql = <<<SQL
       SELECT Nome, DataContrato, Salario
       FROM Pessoa JOIN Funcionario ON Funcionario.Codigo = Pessoa.Codigo
-      JOIN Medico ON Funcionario.Codigo = Medico.Codigo
       SQL;
 
       // Neste exemplo não é necessário utilizar prepared statements
