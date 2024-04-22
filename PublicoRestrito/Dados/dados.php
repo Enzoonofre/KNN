@@ -1,7 +1,5 @@
 <?php
 session_start();
-/*Teste se sem chamar um ExitWhenNotLoggedIn() o usuario consegue acessar este pag digitando
-o caminho diretamente no navegador (Testar isso para todas as pag do acesso Restrito)*/
 ?>
 
 
@@ -28,10 +26,10 @@ o caminho diretamente no navegador (Testar isso para todas as pag do acesso Rest
                 <a href="../homeRestrito.php">Home</a>
             </div>
             <div class="item">
-                <a href="../Cadastros/cadastroFunc.html">Cadastro de Funcionarios</a>
+                <a href="../Cadastros/cadastroFuncionario.php">Cadastro de Funcionarios</a>
             </div>
             <div class="item">
-                <a href="../Cadastros/cadastroPaciente.html">Cadastro de Pacientes</a>
+                <a href="../Cadastros/cadastroPaciente.php">Cadastro de Pacientes</a>
             </div>
         </div>
     </nav>

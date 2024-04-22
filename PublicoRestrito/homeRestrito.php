@@ -40,10 +40,10 @@ if ($user) {
   <nav>
     <div class="conteiner">
       <div class="item">
-        <a href="Cadastros/cadastroFunc.html">Cadastro de Funcionarios</a>
+        <a href="Cadastros/cadastroFuncionario.php">Cadastro de Funcionarios</a>
       </div>
       <div class="item">
-        <a href="Cadastros/cadastroPaciente.html">Cadastro de Pacientes</a>
+        <a href="Cadastros/cadastroPaciente.php">Cadastro de Pacientes</a>
       </div>
       <div class="item">
         <a href="Dados/dados.php">Listagem de Dados</a>

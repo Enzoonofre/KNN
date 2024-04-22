@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -28,10 +32,10 @@
     <nav>
         <div class="conteiner2">
             <div class="item">
-                <a href="../HomeRestrito.html">Home</a>
+                <a href="../homeRestrito.php">Home</a>
             </div>
             <div class="item">
-                <a href="cadastroFunc.html">Cadastro de Funcionários</a>
+                <a href="cadastroFuncionario.php">Cadastro de Funcionários</a>
             </div>
             <div class="item">
                 <a href="../Dados/dados.php">Listagem de Dados</a>

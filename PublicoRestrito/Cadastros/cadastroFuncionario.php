@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,9 +19,6 @@
 
     <header>
         <div>
-            <!--<div class="item_header">
-                <h1>Clínica</h1>
-            </div>-->
             <div class="item_header">
                 <img src="../imagens/logo2.jpg" alt="Logo Clínica" id="logo">
             </div>
@@ -28,13 +29,13 @@
     <nav>
         <div class="conteiner2">
             <div class="item">
-                <a href="../HomeRestrito.html">Home</a>
+                <a href="../homeRestrito.php">Home</a>
             </div>
             <div class="item">
-                <a href="cadastroPaciente.html">Cadastro de Pacientes</a>
+                <a href="cadastroPaciente.php">Cadastro de Pacientes</a>
             </div>
             <div class="item">
-                <a href="../Dados/dados.html">Listagem de Dados</a>
+                <a href="../Dados/dados.php">Listagem de Dados</a>
             </div>
         </div>
     </nav>

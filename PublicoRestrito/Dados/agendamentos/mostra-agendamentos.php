@@ -34,10 +34,10 @@
         <a href="../../homeRestrito.php">Home</a>
       </div>
       <div class="item">
-        <a href="../../Cadastros/cadastroFunc.html">Cadastro de Funcionarios</a>
+        <a href="../../Cadastros/cadastroFuncionario.php">Cadastro de Funcionarios</a>
       </div>
       <div class="item">
-        <a href="../../Cadastros/cadastroPaciente.html">Cadastro de Pacientes</a>
+        <a href="../../Cadastros/cadastroPaciente.php">Cadastro de Pacientes</a>
       </div>
       <div class="item">
         <a href="../dados.php">Listagem de Dados</a>
@@ -49,7 +49,6 @@
     <h3>Agendamentos</h3>
     <table class="table table-striped table-hover">
       <tr>
-        <!--<th></th>-->
         <th>Nome</th>
         <th>Sexo</th>
         <th>Data</th>
@@ -61,7 +60,6 @@
       foreach ($arrayAgendamentos as $agendamento) {
         echo <<<HTML
           <tr>
-            <!--<td></td>-->
             <td>$agendamento->nome</td> 
             <td>$agendamento->sexo</td>
             <td>$agendamento->data</td>
