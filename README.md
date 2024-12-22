@@ -38,8 +38,8 @@ This project is an implementation of the K-Nearest Neighbors (KNN) algorithm, de
 
    ```bash
    KNN/
-   ├── KNN.py           # Main code for KNN simulation.
-   ├── README.md        # Project description.
+      ├── KNN.py           # Main code for KNN simulation.
+      ├── README.md        # Project description.
 ```
 ## 🧠 Concepts Explored
 
