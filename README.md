@@ -36,11 +36,11 @@ This project is an implementation of the K-Nearest Neighbors (KNN) algorithm, de
 
 ## 📂 Project Structure
 
-```bash
+   ```bash
    KNN/
    ├── KNN.py           # Main code for KNN simulation.
    ├── README.md        # Project description.
-
+```
 ## 🧠 Concepts Explored
 
 - Supervised classification algorithms.
@@ -55,3 +55,4 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 
 Developed by Enzo Onofre (enzoonofre50@gmail.com).  
 If you have any questions or suggestions, feel free to reach out! 😊
+
