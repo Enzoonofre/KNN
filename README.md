@@ -32,3 +32,26 @@ This project is an implementation of the K-Nearest Neighbors (KNN) algorithm, de
 1. Clone this repository:
    ```bash
    git clone https://github.com/Enzoonofre/KNN.git
+2. Enter the KNN.py file and run it.
+
+## 📂 Project Structure
+
+```bash
+   KNN/
+   ├── KNN.py           # Main code for KNN simulation.
+   ├── README.md        # Project description.
+
+## 🧠 Concepts Explored
+
+- Supervised classification algorithms.
+- Euclidean distance for proximity calculation.
+- Practical implementation of mathematical logic and Python programming.
+
+## 🤝 Contributions
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## 📩 Contact
+
+Developed by Enzo Onofre (enzoonofre50@gmail.com).  
+If you have any questions or suggestions, feel free to reach out! 😊
